@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './styles/App.scss';
+import './styles/app.scss';
 
 import Homepage from './components/Homepage';
 
