@@ -1,17 +1,21 @@
 import React from 'react';
+import JumbotronSerarch from './JumbotronSearch';
 
 const Jumbotron = () => {
     return (
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-                <h1 class="display-4">Find healthcare abroad</h1>
-                <ul>
-                    <li>Internationally accredited hospitals</li>
-                    <li>Healthcare for every budget</li>
-                    <li>Dedicated personal assistance</li>
-                    <li>Completely free consultations</li>
-                </ul>
+        <div className="jumbotron jumbotron-fluid">
+            <div className="container">
+                <div className="jumbotron-title-wrapper">
+                    <h1 className="display-4">Find healthcare abroad</h1>
+                    <ul>
+                        <li><i className="fas fa-check"></i><span>Internationally accredited hospitals</span></li>
+                        <li><i className="fas fa-check"></i><span>Healthcare for every budget</span></li>
+                        <li><i className="fas fa-check"></i><span>Dedicated personal assistance</span></li>
+                        <li><i className="fas fa-check"></i><span>Completely free consultations</span></li>
+                    </ul>
+                </div>
             </div>
+            <JumbotronSerarch />
         </div>
      );
 }

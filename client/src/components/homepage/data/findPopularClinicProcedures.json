@@ -1,0 +1,30 @@
+[
+    {
+        "title": "Dentistry",
+        "img": "dentist.jpg",
+        "t1": "All-on-4",
+        "t2": "Dental Implant",
+        "t3": "Veneers"
+    },
+    {
+        "title": "Oncology",
+        "img": "oncology.jpg",
+        "t1": "Acute Leukemia Treatment",
+        "t2": "Breast Cancer Treatmentt",
+        "t3": "CyberKnife Treatment"
+    },
+    {
+        "title": "Ophthalmology",
+        "img": "ophtalmology.jpg",
+        "t1": "Cataract Surgery",
+        "t2": "Eyelid Surgeryt",
+        "t3": "Laser Eye Surgery (LASIK)"
+    },
+    {
+        "title": "Orthopedics",
+        "img": "orthopedics.jpg",
+        "t1": "Knee Arthroscopy",
+        "t2": "Knee Replacement",
+        "t3": "Hip Replacement"
+    }
+]
