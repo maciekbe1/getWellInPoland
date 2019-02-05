@@ -1,4 +1,12 @@
 .homepage-wrapper {
+    .nav-bar {
+        nav {
+            width: 100%;
+            img {
+                width: 130px;
+            }
+        }
+    }
     .jumbotron {
         height: 530px;
         background: url('../images/jumbotron.jpg') center -70px no-repeat;
@@ -312,6 +320,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            margin-bottom: 30px;
             p {
                 margin-bottom: 2px;
                 text-align: center;
@@ -376,6 +385,7 @@
         .language-select-container {
             font-size: .75rem;
             display: flex;
+            flex-wrap: wrap;
             color: grey;
             ul {
                 padding: 0 5px;
@@ -384,6 +394,7 @@
         .bottom-nav,
         .bottom-nav-language {
             display: flex;
+            flex-wrap: wrap;
             list-style: none;
             padding: 0;
             margin: 0;
@@ -412,6 +423,7 @@
         .footer-icons {
             display: flex;
             justify-content: flex-end;
+            padding-top: 20px;
             i {
                 height: 38px;
                 width: 38px;
