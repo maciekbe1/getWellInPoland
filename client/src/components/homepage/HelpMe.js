@@ -4,7 +4,7 @@ const HelpMe = () => {
     return (
         <div className="help-me container">
             <div className="row">
-                <p>How can MEDIGO help me?</p>
+                <p>How can Get Well in Poland help me?</p>
                 <div className="help-me-icons w-100">
                     <ul>
                         <li className="help1">
