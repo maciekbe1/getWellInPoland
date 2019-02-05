@@ -12,10 +12,13 @@
          h1 {
             padding-top: 50px;
             padding-bottom: 20px;
-            font-size: 36px;
+            font-size: 2.25rem;
             color: #fff;
             max-width: 465px;
             font-weight: bold;
+            @media (max-width: 576px) {
+                padding: 20px 0 10px 0;
+            }
         }
         ul {
             list-style: none;
@@ -24,7 +27,7 @@
         }
         li {
             margin-bottom: 1px;
-            font-size: 18px;
+            font-size: 1.1rem;
             color: #cef2ec;
             span {
                 padding-left: 10px;
@@ -37,7 +40,7 @@
     .jumbotron-search {
         min-height: 150px;
         color: #cef2ec;
-        font-size: 18px;
+        font-size: 1.1rem;
         background: rgba(24,51,78,.9);
         .row {
             display: flex;
@@ -54,8 +57,9 @@
                 input,
                 .btn {
                     height: 48px;
+                    font-size: 1rem;
                 }
-                .col-sm-2 {
+                .col-sm-3 {
                     display: flex;
                     align-items: flex-end;
                     button {
@@ -68,9 +72,12 @@
                             background: #05AC90;
                         }
                     }
+                    @media (max-width: 576px) {
+                        padding-top: 10px;
+                    }
                 }
                 .col-12 {
-                    font-size: 12px;
+                    font-size: .75rem;
                     margin-top: 5px;
                 }
             }
@@ -94,7 +101,7 @@
                 align-items: center;
                 padding: 1rem;
                 .card-information {
-                    width: calc(100% - 2rem);
+                    width: calc(100% - 32px);
                     padding: 5px;
                     position: absolute;
                     bottom: 0;
@@ -120,13 +127,13 @@
                 width: 100%;
                 padding-bottom: 31px;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.1rem;
                 color: #7e99b4;
             }
             p {
                 line-height: 20px;
                 font-style: italic;
-                font-size: 14px
+                font-size: .9rem;
             }
             img {
                 margin-right: 10px;
@@ -139,19 +146,23 @@
         background: url('../images/chooseclinic.jpg') center no-repeat;
         .row {
             justify-content: center;
+            align-items: center;
             h2 {
                 width: 100%;
                 padding-top: 65px;
                 padding-bottom: 5px;
                 text-align: center;
-                font-size: 30px;
+                font-size: 1.9rem;
                 line-height: 31px;
                 color: #fff;
+                @media (max-width: 576px) {
+                    padding-top: 30px;
+                }
             }
             p {
                 text-align: center;
                 color: #fff;
-                font-size: 18px;
+                font-size: 1.1rem;
                 line-height: 24px;
             }
             button {
@@ -160,7 +171,7 @@
                 background: #0abea0;
                 border: none;
                 border-bottom: solid 3px #067260;
-                font-size: 18px;
+                font-size: 1.1rem;
                 line-height: 42px;
                 color: #fff;
                 margin: 28px auto;
@@ -177,7 +188,7 @@
         p {
             padding-bottom: 55px;
             text-align: center;
-            font-size: 36px;
+            font-size: 2.25rem;
             color: #18334e;
             width: 100%;
         }
@@ -187,6 +198,7 @@
                 padding: 0;
                 list-style: none;
                 li {
+                    font-size: 1rem;
                     height: 205px;
                     width: 20%;
                     padding: 108px 20px 25px;
@@ -227,7 +239,7 @@
                 }
             }
 
-            @media screen and (max-width: 768px) {
+            @media (max-width: 768px) {
                 ul {
                     display: flex;
                     flex-direction: column;
@@ -253,7 +265,7 @@
                 text-transform: uppercase;
                 padding: 0 30px;
                 line-height: 44px;
-                font-size: 14px;
+                font-size: .9rem;
                 border-bottom-right-radius: 3px;
                 border-bottom-left-radius: 3px;
                 background-color: rgba(255, 255 ,255, 0.3);
@@ -266,13 +278,13 @@
                 padding-top: 50px;
                 padding-bottom: 30px;
                 text-align: center;
-                font-size: 36px;
+                font-size: 2.25rem;
                 color: #fff;
             }
             p {
                 text-align: center;
                 color: #fff;
-                font-size: 18px;
+                font-size: 1.1rem;
                 line-height: 24px;
                 margin-bottom: 15px;
             }
@@ -282,7 +294,7 @@
                 background: #0abea0;
                 border: none;
                 border-bottom: solid 3px #067260;
-                font-size: 18px;
+                font-size: 1.1rem;
                 line-height: 42px;
                 color: #fff;
                 margin: 35px auto 20px auto;
@@ -305,16 +317,16 @@
                 text-align: center;
                 line-height: 20px;
                 color: grey;
-                font-size: 14px;
+                font-size: .9rem;
             }
             .title {
                 margin-bottom: 2px;
                 text-align: center;
-                font-size: 18px;
+                font-size: 1.1rem;
                 color: #7e99b4;
             }
             a {
-                font-size: 14px;
+                font-size: .9rem;
                 color: #0abea0;
                 cursor: pointer;
                 &:hover {
@@ -353,6 +365,63 @@
                     background-position: center -680px;
                     border: 1px solid #e5e5e5;
                     border-radius: 50%;
+                }
+            }
+        }
+    }
+    .footer {
+        padding: 40px 0 20px 0;
+        background: #1f1f1f;
+        color: #fff;
+        .language-select-container {
+            font-size: .75rem;
+            display: flex;
+            color: grey;
+            ul {
+                padding: 0 5px;
+            }
+        }
+        .bottom-nav,
+        .bottom-nav-language {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            padding-top: 20px;
+            li {
+                color: #fff;
+                margin-right: 20px;
+                font-size: .75rem;
+                &:hover {
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+        p {
+            margin-bottom: 5px;
+            font-size: 12px;
+            color: grey;
+        }
+        a {
+            color: #fff;
+        }
+        .footer-notice {
+            padding-top: 8px;
+        }
+        .footer-icons {
+            display: flex;
+            justify-content: flex-end;
+            i {
+                height: 38px;
+                width: 38px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #333;
+                border-radius: 50%;
+                &:hover {
+                    border-color: #666
                 }
             }
         }

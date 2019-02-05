@@ -11,11 +11,11 @@ const JumbotronSerarch = () => {
                                 <label htmlFor="search-by-procedure">I am looking for</label>
                                 <input type="text" className="form-control" id="search-by-procedure" placeholder="Search by procedure, e.g. teeth whitening, laser eye surgery.." />
                             </div>
-                            <div className="col-sm-5">
+                            <div className="col-sm-4">
                                 <label htmlFor="destinations">Near</label>
                                 <input type="text" className="form-control" id="destinations" placeholder="Username" />
                             </div>
-                            <div className="col-sm-2">
+                            <div className="col-sm-3">
                                 <button type="submit" className="btn btn-primary">Search clinics</button>
                             </div>
 

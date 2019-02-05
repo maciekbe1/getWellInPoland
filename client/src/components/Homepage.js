@@ -7,6 +7,7 @@ import ChooseClinic from './homepage/ChooseClinic';
 import HelpMe from './homepage/HelpMe';
 import Destination from './homepage/Destination';
 import HowItWorks from './homepage/HowItWorks';
+import Footer from './Footer';
 
 class Homepage extends React.Component {
     render() {
@@ -19,6 +20,7 @@ class Homepage extends React.Component {
                 <HelpMe />
                 <Destination />
                 <HowItWorks />
+                <Footer />
             </div>
         );
     }
