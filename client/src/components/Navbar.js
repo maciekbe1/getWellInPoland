@@ -22,6 +22,23 @@ const Navbar = () => {
                             <li className="nav-item">
                             <a className="nav-link disabled" href="#test" tabIndex="-1" aria-disabled="true">Disabled</a>
                             </li>
+                            <li className="nav-item">
+                                <a className="nav-link dropdown-toggle" href="#test" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                About
+                                </a>
+                                <div className="container-fluid dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <div className="container">
+                                        <ul>
+                                            <li><a href="#test">About us</a></li>
+                                            <li><a href="#test">How it works</a></li>
+                                            <li><a href="#test">Blog</a></li>
+                                            <li><a href="#test">Pricing</a></li>
+                                            <li><a href="#test">Second Opinion</a></li>
+                                            <li><a href="#test">Business</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
                 </div>
