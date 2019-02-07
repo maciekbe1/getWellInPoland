@@ -1,8 +1,33 @@
 .homepage-wrapper {
     .nav-bar {
+        position: relative;
         nav {
             img {
                 width: 130px;
+            }
+            .dropdown-menu {
+                border-radius: 0;
+                border: 0;
+                margin: 0;
+                ul {
+                    display: flex;
+                    justify-content: center;
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+                    li {
+                        padding: 0 25px;
+                        margin: 10px 0;
+                        border-right: 1px solid grey;
+                        &:last-of-type {
+                            border: none;
+                        }
+                        a {
+                            color: black;
+                            font-size: .75rem;
+                        }
+                    }
+                }
             }
         }
     }
