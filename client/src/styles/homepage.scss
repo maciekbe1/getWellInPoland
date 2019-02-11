@@ -1,14 +1,42 @@
+$btn-color: #2977EF;
+$btn-dark-color: #133870;
+$btn-hover-color: #133870;
+$transition: .3s;;
+
 .homepage-wrapper {
     .nav-bar {
         position: relative;
         nav {
             img {
-                width: 130px;
+                width: 200px;
             }
+            .any-questions {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                i {
+                    color: #dddddd;
+                    padding: 15px;
+                }
+                p {
+                    margin: 0;
+                    font-size: 12px;
+                    color: #aaa;
+                }
+            }
+            .show > .dropdown-menu {
+                max-height: 800px;
+                visibility: visible;
+              }
             .dropdown-menu {
                 border-radius: 0;
                 border: 0;
                 margin: 0;
+                display: block;
+                max-height: 0;
+                visibility: hidden;
+                transition: all 0.4s ease-in-out;
+                overflow: hidden;
                 ul {
                     display: flex;
                     justify-content: center;
@@ -66,10 +94,11 @@
             }
         }
         i {
-            color: #067260;
+            color: #05AC90;
         }
     }
     .jumbotron-search {
+        display: none;
         min-height: 150px;
         color: #cef2ec;
         font-size: 1.1rem;
@@ -96,12 +125,13 @@
                     align-items: flex-end;
                     button {
                         width: 100%;
-                        background-color: #0abea0;
+                        background-color: $btn-color;
                         border: none;
-                        border-bottom: 4px solid #067260;
+                        border-bottom: 4px solid $btn-dark-color;
                         border-radius: 0;
+                        transition: $transition;
                         &:hover {
-                            background: #05AC90;
+                            background: $btn-hover-color;
                         }
                     }
                     @media (max-width: 576px) {
@@ -146,7 +176,6 @@
         }
     }
     .doctor-patient-reviews {
-        margin-top: 80px;
         padding-top: 44px;
         padding-bottom: 73px;
         background: #f8f8f8;
@@ -174,6 +203,7 @@
         }
     }
     .choose-clinic {
+        margin-top: 80px;
         min-height: 300px;
         background: url('../images/chooseclinic.jpg') center no-repeat;
         .row {
@@ -200,15 +230,16 @@
             button {
                 display: flex;
                 padding: 0 24px;
-                background: #0abea0;
+                background: $btn-color;
                 border: none;
-                border-bottom: solid 3px #067260;
+                border-bottom: solid 3px $btn-dark-color;
                 font-size: 1.1rem;
                 line-height: 42px;
                 color: #fff;
                 margin: 28px auto;
+                transition: $transition;
                 &:hover {
-                    background: #05AC90;
+                    background: $btn-hover-color;
                 }
             }
         }
@@ -323,15 +354,16 @@
             button {
                 display: flex;
                 padding: 0 40px;
-                background: #0abea0;
+                background: $btn-color;
                 border: none;
-                border-bottom: solid 3px #067260;
+                border-bottom: solid 3px $btn-dark-color;
                 font-size: 1.1rem;
                 line-height: 42px;
                 color: #fff;
                 margin: 35px auto 20px auto;
+                transition: $transition;
                 &:hover {
-                    background: #05AC90;
+                    background: $btn-hover-color;
                 }
             }
         }
@@ -360,7 +392,8 @@
             }
             a {
                 font-size: .9rem;
-                color: #0abea0;
+                color: $btn-color;
+                transition: $transition;
                 cursor: pointer;
                 &:hover {
                     text-decoration: underline;

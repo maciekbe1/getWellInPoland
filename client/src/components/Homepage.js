@@ -17,8 +17,8 @@ class Homepage extends React.Component {
                 <Navbar />
                 <Jumbotron />
                 <FindPopularClinicProcedures />
-                <DoctorsPatientsReviews />
                 <ChooseClinic />
+                <DoctorsPatientsReviews />
                 <HelpMe />
                 <Destination />
                 <HowItWorks />
