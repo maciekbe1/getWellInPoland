@@ -10,7 +10,7 @@ class LanguageNavBar extends React.Component {
                         <li>LANGUAGE & CURRENCY</li>
                         <li>
                             <select id="switch-language">
-                                <option value="en" selected="selected">
+                                <option value="en" defaultValue="selected">
                                     English
                                 </option>
                                 <option value="de">
@@ -42,7 +42,7 @@ class LanguageNavBar extends React.Component {
                                 <option value="CAD">CAD - C$</option>
                                 <option value="AUD">AUD - A$</option>
                                 <option value="THB">THB - ฿</option>
-                                <option value="PLN" selected="selected">PLN - zł</option>
+                                <option value="PLN" defaultValue="selected">PLN - zł</option>
                                 <option value="BRL">BRL - R$</option>
                                 <option value="MYR">MYR - RM</option>
                                 <option value="HUF">HUF - Ft.</option>
@@ -58,9 +58,9 @@ class LanguageNavBar extends React.Component {
                                 <option value="MAD">MAD - م.</option>
                             </select>
                         </li>
-                        <li><button>Update</button></li>
+                        <li><button className="btn btn-outline-info">Update</button></li>
                     </ul>
-                    <button onClick={this.props.close} type="button" class="close" aria-label="Close">
+                    <button onClick={this.props.close} type="button" className="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
