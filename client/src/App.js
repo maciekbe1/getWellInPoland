@@ -1,16 +1,64 @@
 import React, { Component } from 'react';
 import './styles/app.scss';
-
 import Homepage from './components/Homepage';
+import {IntlProvider} from "react-intl";
+import { addLocaleData } from "react-intl";
+import locale_en from 'react-intl/locale-data/en';
+import locale_de from 'react-intl/locale-data/de';
+import locale_pl from 'react-intl/locale-data/pl';
+import messages_de from "./translations/de.json";
+import messages_en from "./translations/en.json";
+import messages_pl from "./translations/pl.json";
+import { instanceOf } from 'prop-types';
+import { withCookies, Cookies } from 'react-cookie';
+addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
 class App extends Component {
+    static propTypes = {
+        cookies: instanceOf(Cookies).isRequired
+      };
+
+    state = {
+        language: ''
+    }
+
+    componentWillMount() {
+        const { cookies } = this.props;
+        if (cookies.get('getWellLang')) {
+            this.setState({
+                language: cookies.get('getWellLang')
+            })
+        } else {
+            cookies.set('getWellLang', 'en', { path: '/' });
+        }
+    }
+
+    changeLanguage = (lang) => {
+        const { cookies } = this.props;
+        cookies.set('getWellLang', lang, { path: '/' });
+        this.setState({
+            language: lang
+        })
+    }
+
     render() {
+        const availableLanguages = [ 'en', 'de', 'pl']
+
+        const messages = {
+            'de': messages_de,
+            'en': messages_en,
+            'pl': messages_pl
+        };
+
         return (
-            <div className="App">
-                <Homepage />
-            </div>
+            <IntlProvider locale={this.state.language} messages={messages[this.state.language]}>
+                <div className="App">
+                    <Homepage languages={availableLanguages} change={this.changeLanguage} language={this.state.language} />
+                </div>
+            </IntlProvider>
+
         );
     }
 }
 
-export default App;
+export default withCookies(App)
