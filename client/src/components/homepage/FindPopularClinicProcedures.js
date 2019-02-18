@@ -1,12 +1,17 @@
 import React from 'react';
 import data from './data/findPopularClinicProcedures.json';
+import {FormattedMessage} from 'react-intl';
+
 
 const FindPopularClinicProcedures = () => {
     return (
         <div className="find-clinic">
             <div className="container">
                 <div className="row">
-                    <h2>Find a Clinic for Popular Procedures</h2>
+                    <h2>                    
+                        <FormattedMessage id="find.clinic"
+                            defaultMessage={`Find a Clinic for Popular Procedures`}/>
+                    </h2>
                     {data.map((item, index) => {
                         return (
                             <div className="card col-lg-3 col-sm-6 text-white" key={index}>
