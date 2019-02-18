@@ -3,7 +3,7 @@ import React from 'react';
 const ChooseClinic = () => {
     return (
         <div className="choose-clinic container-fluid">
-            <div className="container">
+            <div className="container p-0">
                 <div className="row">
                     <div className="col-lg-6 offeset-lg-3">
                         <h2>Need help choosing the right clinic?</h2>

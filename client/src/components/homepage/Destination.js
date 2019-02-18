@@ -3,7 +3,7 @@ import React from 'react';
 const Destination = () => {
     return (
         <div className="destination container-fluid">
-            <div className="container">
+            <div className="container p-0">
                 <div className="row">
                     <div className="">
                         <span>Featured destination</span>
