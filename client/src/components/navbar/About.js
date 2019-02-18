@@ -14,7 +14,7 @@ class AboutNavBar extends React.Component {
                         <li><a href="#test">Second Opinion</a></li>
                         <li><a href="#test">Business</a></li>
                     </ul>
-                    <button onClick={this.props.close} type="button" class="close" aria-label="Close">
+                    <button onClick={this.props.close} type="button" className="close" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>

@@ -6,6 +6,7 @@ $transition: .3s;
 .homepage-wrapper {
     .nav-bar {
         position: relative;
+        padding: 0;
         nav {
             img {
                 width: 200px;
@@ -25,17 +26,24 @@ $transition: .3s;
                 }
             }
         }
+        .dropdown {
+            position: unset;
+        }
         .dropdown-menu {
             border-radius: 0;
             border: 0;
             margin: 0;
+            min-height: 70px;
             .container {
                 display: flex;
-                justify-content: space-evenly;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
             }
             ul {
                 display: flex;
                 justify-content: center;
+                align-items: center;
                 list-style: none;
                 padding: 0;
                 margin: 0;
@@ -47,9 +55,37 @@ $transition: .3s;
                         border: none;
                     }
                     a {
-                        color: black;
-                        font-size: .75rem;
+                        color: grey;
+                        font-size: .9rem;
                     }
+                }
+            }
+        }
+        .language-dropdown-menu {
+            li {
+                text-transform: uppercase;
+                font-size: .75rem;
+                color: grey;
+            }
+            select {
+                font-size: 1rem;
+                border: 1px solid #ccc;
+                padding-top: 0;
+                height: 35px;
+                width: 150px;
+                padding: 0 15px;
+                color: grey;
+            }
+            .btn-outline-info {
+                color: $btn-color;
+                border-color: $btn-color;
+                border-radius: 0;
+                height: 35px;
+                padding: 0 25px;
+                &:hover {
+                    color: #fff;
+                    background-color: $btn-color;
+                    border-color: none;
                 }
             }
         }
