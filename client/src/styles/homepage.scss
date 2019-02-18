@@ -9,7 +9,7 @@ $transition: .3s;
         padding: 0;
         nav {
             img {
-                width: 200px;
+                max-width: 200px;
             }
             .any-questions {
                 display: flex;
@@ -86,6 +86,19 @@ $transition: .3s;
                     color: #fff;
                     background-color: $btn-color;
                     border-color: none;
+                }
+            }
+        }
+        @media (max-width: 576px) {
+            .nav-btn {
+                width: 100%;
+            }
+            .dropdown-menu {
+                ul {
+                    flex-direction: column;
+                    li {
+                        border: none;
+                    }
                 }
             }
         }
@@ -365,15 +378,21 @@ $transition: .3s;
                 background-color: rgba(255, 255 ,255, 0.3);
                 color: #fff;
                 width: 230px;
-                margin: 0 auto;
+                margin: 0 auto 40px;
+                @media (max-width: 992px) {
+                    margin: 0 auto 10px;
+                }
             }
             h2 {
                 width: 100%;
-                padding-top: 50px;
+                padding-top: 10px;
                 padding-bottom: 30px;
                 text-align: center;
                 font-size: 2.25rem;
                 color: #fff;
+                @media (max-width: 576px) {
+                    padding-bottom: 10px;
+                }
             }
             p {
                 text-align: center;
@@ -395,6 +414,16 @@ $transition: .3s;
                 transition: $transition;
                 &:hover {
                     background: $btn-hover-color;
+                }
+            }
+            @media (max-width: 576px) {
+                span {
+                    display: none;
+                }
+                p {
+                    &:nth-of-type(1) {
+                        display: none;
+                    }
                 }
             }
         }
@@ -520,6 +549,7 @@ $transition: .3s;
                 align-items: center;
                 border: 1px solid #333;
                 border-radius: 50%;
+                margin: 0 3px;
                 &:hover {
                     border-color: #666
                 }
