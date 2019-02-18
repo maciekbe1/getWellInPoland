@@ -9,13 +9,15 @@ import Destination from './homepage/Destination';
 import HowItWorks from './homepage/HowItWorks';
 import Footer from './Footer';
 import Navbar from './Navbar';
+import JumbotronSerarch from './homepage/JumbotronSearch';
 
 class Homepage extends React.Component {
     render() {
         return (
             <div className="homepage-wrapper">
-                <Navbar />
+                <Navbar languages={this.props.languages} change={this.props.change} language={this.props.language}/>
                 <Jumbotron />
+                <JumbotronSerarch />
                 <FindPopularClinicProcedures />
                 <ChooseClinic />
                 <DoctorsPatientsReviews />
