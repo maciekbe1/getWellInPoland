@@ -53,7 +53,7 @@ class App extends Component {
         return (
             <IntlProvider locale={this.state.language} messages={messages[this.state.language]}>
                 <div className="App">
-                    <Homepage languages={availableLanguages} change={this.changeLanguage} language={this.state.language} />
+                    <Homepage languages={availableLanguages} changeLanguage={this.changeLanguage} language={this.state.language} />
                 </div>
             </IntlProvider>
 

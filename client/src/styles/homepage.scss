@@ -29,6 +29,12 @@ $transition: .3s;
         .dropdown {
             position: unset;
         }
+        .navbar-nav {
+            @media (max-width: 992px) {
+                justify-content: center;
+                align-items: center;
+            }
+        }
         .dropdown-menu {
             border-radius: 0;
             border: 0;

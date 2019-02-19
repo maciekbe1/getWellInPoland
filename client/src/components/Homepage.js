@@ -15,7 +15,7 @@ class Homepage extends React.Component {
     render() {
         return (
             <div className="homepage-wrapper">
-                <Navbar languages={this.props.languages} change={this.props.change} language={this.props.language}/>
+                <Navbar languages={this.props.languages} changeLanguage={this.props.changeLanguage} language={this.props.language}/>
                 <Jumbotron />
                 <JumbotronSerarch />
                 <FindPopularClinicProcedures />
@@ -24,7 +24,7 @@ class Homepage extends React.Component {
                 <HelpMe />
                 <Destination />
                 <HowItWorks />
-                <Footer />
+                <Footer changeLanguage={this.props.changeLanguage} />
             </div>
         );
     }

@@ -4,8 +4,9 @@ import logo from '../images/logo/logo_male.png';
 // import AboutNavBar from './navbar/About';
 
 class Navbar extends React.Component {
-    change = (e) => {
-        this.props.change(e.target.value)
+
+    changeLanguage = (e) => {
+        this.props.changeLanguage(e.target.value);
     }
 
     render () {
@@ -49,14 +50,14 @@ class Navbar extends React.Component {
                                         </div>
                                     </div>
                                 </li>
+
                                 <li className="nav-item nav-link">
-                                    <select onChange={this.change} className="nav-lang-change">
+                                    <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">
                                         {this.props.languages.map((lang, index) => {
-                                            return <option value={lang} key={index} selected={this.props.language ===  lang ? 'selected' : null} >{lang.toUpperCase()}</option>
+                                            return <option value={lang} key={index} >{lang.toUpperCase()}</option>
                                         })}
                                     </select>
                                 </li>
-
 
                             </ul>
                         </div>
