@@ -9,8 +9,7 @@ const FindPopularClinicProcedures = () => {
             <div className="container">
                 <div className="row">
                     <h2>                    
-                        <FormattedMessage id="find.clinic"
-                            defaultMessage={`Find a Clinic for Popular Procedures`}/>
+                        <FormattedMessage id="find.clinic.title" defaultMessage={`Find a Clinic for Popular Procedures`}/>
                     </h2>
                     {data.map((item, index) => {
                         return (

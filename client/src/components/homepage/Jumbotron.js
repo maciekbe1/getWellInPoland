@@ -1,5 +1,5 @@
 import React from 'react';
-import JumbotronSerarch from './JumbotronSearch';
+// import JumbotronSerarch from './JumbotronSearch';
 import {FormattedMessage} from 'react-intl';
 
 const Jumbotron = () => {
@@ -8,18 +8,28 @@ const Jumbotron = () => {
             <div className="container">
                 <div className="jumbotron-title-wrapper">
                     <h1 className="display-4">
-                    <FormattedMessage id="app.title"
-                              defaultMessage={`Find healthcare abroad`}/>
+                        <FormattedMessage id="jumbotron.title" defaultMessage={`Find healthcare abroad`}/>
                     </h1>
                     <ul>
-                        <li><i className="fas fa-check"></i><span>Internationally accredited hospitals</span></li>
-                        <li><i className="fas fa-check"></i><span>Healthcare for every budget</span></li>
-                        <li><i className="fas fa-check"></i><span>Dedicated personal assistance</span></li>
-                        <li><i className="fas fa-check"></i><span>Completely free consultations</span></li>
+                        <li>
+                            <i className="fas fa-check"></i>
+                            <FormattedMessage id="jumbotron.text.1" defaultMessage={`Internationally accredited hospitals`}/>
+                        </li>
+                        <li>
+                            <i className="fas fa-check"></i>
+                            <FormattedMessage id="jumbotron.text.2" defaultMessage={`Healthcare for every budget`}/>
+                        </li>
+                        <li>
+                            <i className="fas fa-check"></i>
+                            <FormattedMessage id="jumbotron.text.3" defaultMessage={`Dedicated personal assistance`}/>
+                        </li>
+                        <li>
+                            <i className="fas fa-check"></i>
+                            <FormattedMessage id="jumbotron.text.4" defaultMessage={`Completely free consultations`}/>
+                        </li>
                     </ul>
                 </div>
             </div>
-            <JumbotronSerarch />
         </div>
      );
 }

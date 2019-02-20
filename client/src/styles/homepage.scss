@@ -148,7 +148,6 @@ $transition: .3s;
         }
     }
     .jumbotron-search {
-        display: none;
         min-height: 150px;
         color: #cef2ec;
         font-size: 1.1rem;
@@ -373,10 +372,12 @@ $transition: .3s;
         background: url('../images/destination.jpg') center top repeat-x;
         .row {
             justify-content: center;
-            span {
+            h3 {
                 display: flex;
+                justify-content: center;
                 text-transform: uppercase;
-                padding: 0 30px;
+                // padding: 0 30px;
+                text-align: center;
                 line-height: 44px;
                 font-size: .9rem;
                 border-bottom-right-radius: 3px;
