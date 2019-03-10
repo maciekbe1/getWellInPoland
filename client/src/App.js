@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './styles/app.scss';
-import Homepage from './components/Homepage';
+import { HashRouter, Route } from 'react-router-dom';
+import Homepage from './components/pages/Homepage';
+import ClinicsPage from './components/pages/ClinicsPage'
 import {IntlProvider} from "react-intl";
 import { addLocaleData } from "react-intl";
 import locale_en from 'react-intl/locale-data/en';
@@ -11,6 +12,10 @@ import messages_en from "./translations/en.json";
 import messages_pl from "./translations/pl.json";
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
+import Clinic from "./components/clinicspage/Clinic";
+import Navbar from "./components/Navbar";
+import Footer from './components/Footer';
+import './styles/app.scss';
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
 class App extends Component {
@@ -20,7 +25,7 @@ class App extends Component {
 
     state = {
         language: ''
-    }
+    };
 
     componentWillMount() {
         const { cookies } = this.props;
@@ -39,10 +44,10 @@ class App extends Component {
         this.setState({
             language: lang
         })
-    }
+    };
 
     render() {
-        const availableLanguages = [ 'en', 'de', 'pl']
+        const availableLanguages = [ 'en', 'de', 'pl'];
 
         const messages = {
             'de': messages_de,
@@ -53,10 +58,25 @@ class App extends Component {
         return (
             <IntlProvider locale={this.state.language} messages={messages[this.state.language]}>
                 <div className="App">
-                    <Homepage languages={availableLanguages} changeLanguage={this.changeLanguage} language={this.state.language} />
+                    <HashRouter>
+                        <div>
+                            <Navbar
+                                languages={availableLanguages}
+                                changeLanguage={this.changeLanguage}
+                                language={this.state.language}/>
+                            <Route path="/" exact
+                                render={(render) => (<Homepage {...render}
+                                   languages={availableLanguages}
+                                   changeLanguage={this.changeLanguage}
+                                   language={this.state.language} />
+                                   )}/>
+                            <Route path="/clinics" component={ClinicsPage} />
+                            <Route path={'/clinic/:id'} component={Clinic} />
+                            <Footer changeLanguage={this.props.changeLanguage} />
+                        </div>
+                    </HashRouter>
                 </div>
             </IntlProvider>
-
         );
     }
 }

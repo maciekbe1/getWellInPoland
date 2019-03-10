@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 import logo from '../images/logo/logo_male.png';
 // import LanguageNavBar from './navbar/Language';
 // import AboutNavBar from './navbar/About';
@@ -7,14 +8,16 @@ class Navbar extends React.Component {
 
     changeLanguage = (e) => {
         this.props.changeLanguage(e.target.value);
-    }
+    };
 
     render () {
         return (
             <div className="nav-bar container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
                     <div className="container">
-                        <a className="navbar-brand" href="#test"><img src={logo} alt="logo"/></a>
+                        <Link className="navbar-brand" to="/">
+                            <img src={logo} alt="logo"/>
+                        </Link>
 
                         <div className="any-questions">
                             <i className="fas fa-user-nurse fa-2x"></i>

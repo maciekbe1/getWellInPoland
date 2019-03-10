@@ -4,7 +4,7 @@ class Footer extends React.Component {
 
     changeLanguage = (e) => {
         this.props.changeLanguage(e.target.classList[0])
-    }
+    };
 
     render() {
         return (

@@ -1,6 +1,6 @@
 import React from 'react';
-// import JumbotronSerarch from './JumbotronSearch';
 import {FormattedMessage} from 'react-intl';
+import JumbotronSearch from "./JumbotronSearch";
 
 const Jumbotron = () => {
     return (
@@ -30,8 +30,9 @@ const Jumbotron = () => {
                     </ul>
                 </div>
             </div>
+            <JumbotronSearch/>
         </div>
      );
-}
+};
 
 export default Jumbotron;

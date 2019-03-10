@@ -1,34 +1,16 @@
 import React from 'react';
-
-const JumbotronSerarch = () => {
+import Autocomplete from './Autocomplete'
+const JumbotronSearch = () => {
     return (
-        <div className="jumbotron-search">
-            <div className="container">
-                <div className="row">
-                    <form>
-                        <div className="form-row">
-                            <div className="col-sm-5">
-                                <label htmlFor="search-by-procedure">I am looking for</label>
-                                <input type="text" className="form-control" id="search-by-procedure" placeholder="Search by procedure, e.g. teeth whitening, laser eye surgery.." />
-                            </div>
-                            <div className="col-sm-4">
-                                <label htmlFor="destinations">Near</label>
-                                <input type="text" className="form-control" id="destinations" placeholder="Username" />
-                            </div>
-                            <div className="col-sm-3">
-                                <button type="submit" className="btn btn-primary">Search clinics</button>
-                            </div>
+        <div className="jumbotron-search d-flex align-items-center">
 
-                            <div className="col-12">
-                                Latest searches:
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div className="container col-sm-5 text-center">
+                <h2>Help me find a clinic</h2>
+                    <label htmlFor="search-by-procedure">I am looking for</label>
+                    <Autocomplete />
             </div>
-
         </div>
      );
-}
+};
 
-export default JumbotronSerarch;
+export default JumbotronSearch;
