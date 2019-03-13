@@ -7,63 +7,53 @@ import SignIn from './navbar/SignIn';
 import {AuthConsumer} from "./context/AuthContext";
 
 class Navbar extends React.Component {
-    state = {
-        login: null,
-        password: null,
-        token: null,
-        wrongData: false
-    };
+    // state = {
+    //     login: null,
+    //     password: null,
+    //     token: null,
+    //     wrongData: false
+    // };
 
-    changeLanguage = (e) => {
-        this.props.changeLanguage(e.target.value);
-    };
+    // changeLanguage = (e) => {
+    //     this.props.changeLanguage(e.target.value);
+    // };
 
-    onSignInHandle = () => {
-        let data = window.btoa(`${this.state.login}:${this.state.password}`);
-        axios({
-            method: 'post',
-            url: 'http://localhost/index.php/restApi/generateJWT',
-            data: {
-                "user-key" : data
-            }
-        })
-            .then( response => {
-                console.log(response);
-                this.setState({
-                    token: response.data.token,
-                    wrongData: false
-                })
-                sessionStorage.setItem('token', response.data.token);
-                document.querySelector('#closeLoginModal').click();
-                document.querySelector('#login').value = '';
-                document.querySelector('#password').value = '';
-            })
-            .catch(error => {
-                console.log(error);
-                this.setState({wrongData: true})
-            })
-    }
+    // onSignInHandle = () => {
+    //     let data = window.btoa(`${this.state.login}:${this.state.password}`);
+    //     axios({
+    //         method: 'post',
+    //         url: 'http://localhost/index.php/restApi/generateJWT',
+    //         data: {
+    //             "user-key" : data
+    //         }
+    //     })
+    //         .then( response => {
+    //             console.log(response);
+    //             this.setState({
+    //                 token: response.data.token,
+    //                 wrongData: false
+    //             })
+    //             sessionStorage.setItem('token', response.data.token);
+    //             document.querySelector('#closeLoginModal').click();
+    //             document.querySelector('#login').value = '';
+    //             document.querySelector('#password').value = '';
+    //         })
+    //         .catch(error => {
+    //             console.log(error);
+    //             this.setState({wrongData: true})
+    //         })
+    // }
 
-    onLoginHandle = (data) => {
-        this.setState({login: data})
-    }
+    // onLoginHandle = (data) => {
+    //     this.setState({login: data})
+    // }
 
-    onPasswordHandle = (data) => {
-        let password = sha256(data);
-        this.setState({password: password})
-    }
+    // onPasswordHandle = (data) => {
+    //     let password = sha256(data);
+    //     this.setState({password: password})
+    // }
 
     render () {
-        const signInButton = (!this.state.token
-            ? <a className="nav-link" href="#test" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
-            : <Link className="nav-link" to="/" onClick={() => {
-                this.setState({
-                    login: null,
-                    password: null,
-                    token: null
-                })
-                sessionStorage.removeItem('token');
-            }}>Sign out</Link> );
         return (
             <div className="nav-bar container-fluid">
                 <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -108,24 +98,33 @@ class Navbar extends React.Component {
                                 </li>
 
                                 <li className="nav-item">
-                            <AuthConsumer>
-                                    {/*{signInButton}*/}
-                                    {({ isAuth, login, logout }) => (
-                                        <div>
-                                        {isAuth ? (
-                                                <ul>
-                                                    <Link to="/clinics">
-                                                        clinics
-                                                    </Link>
-                                                    <button onClick={logout}>logout</button>
-                                                </ul>
-                                            ) : (
-                                                <button onClick={login}>login</button>
+                                    <AuthConsumer>
+                                        {({ isAuth, login, logout }) => (
+                                            <div>
+                                            {
+                                                isAuth
+                                                ? <Link className="nav-link" to="/clinics">Clinics</Link>
+                                                : null
+                                            }
+                                        </div>
                                             )}
-                                    </div>
-                                        )}
-                            </AuthConsumer>
+                                    </AuthConsumer>
                                 </li>
+
+                                <li className="nav-item">
+                                    <AuthConsumer>
+                                        {(context) => (
+                                            <div>
+                                            {
+                                                !context.isAuth
+                                                ? <a className="nav-link" href="#test" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
+                                                : <Link className="nav-link" to="/" onClick={context.signOut}>Sign out</Link>
+                                            }
+                                        </div>
+                                            )}
+                                    </AuthConsumer>
+                                </li>
+
                                 <li className="nav-item nav-link">
                                     <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">
                                         {this.props.languages.map((lang, index) => {
@@ -137,7 +136,7 @@ class Navbar extends React.Component {
                         </div>
                     </div>
 
-                    <SignIn signIn={this.onSignInHandle} login={this.onLoginHandle} password={this.onPasswordHandle} wrongText={this.state.wrongData}/>
+                    <SignIn />
 
             </nav>
             </div>
