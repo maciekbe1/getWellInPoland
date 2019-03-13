@@ -12,7 +12,7 @@
     "companyRegist" : {
       "type" : "Clinic"
     },
-    "institutionAdress" : {
+    "institutionAddress" : {
       "street" : "Leśna Polana",
       "buildingNumber": "1",
       "localNumber": "",
@@ -48,7 +48,7 @@
     "companyRegist" : {
       "type" : "Clinic"
     },
-    "institutionAdress" : {
+    "institutionAddress" : {
       "street" : "Piastowska",
       "buildingNumber": "67a",
       "localNumber": "",

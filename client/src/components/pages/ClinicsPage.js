@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import clinics from '../../database/clinics.json';
-// import FilteredClinics from '../clinicspage/FilteredClinics'
 import {Link} from "react-router-dom";
+// import axios from "axios";
 
 class ClinicsPage extends Component {
     state = {
@@ -13,6 +13,42 @@ class ClinicsPage extends Component {
     };
     componentDidMount(props){
         // const { match: { params } } = this.props;
+        // let customers = [];
+        // token(response => {
+        //     axios.get(`http://localhost/index.php/restApi/request/model/KliSlo/pagination/{"page":1, "itemsPerPage":1000}`, {
+        //         headers: {
+        //             'Authorization': response.data.token
+        //         }
+        //     }).then( response => {
+        //         response.data.data.objects.forEach(item => {
+        //             Object.keys(item).filter(key => {
+        //                 if(item[key] === '30002960') {
+        //                     // console.log(item)
+        //                     customers.push(item.KLS_ID_KLIENT);
+        //                 }
+        //                 return null;
+        //             });
+        //         });
+        //
+        //     });
+        //     axios.get(`http://localhost/index.php/restApi/request/model/KlientOpis/pagination/{"page":1, "itemsPerPage":10000}`, {
+        //         headers: {
+        //             'Authorization': response.data.token
+        //         }
+        //     }).then(response => {
+        //         response.data.data.objects.forEach(item => {
+        //             Object.keys(item).filter(key => {
+        //                 customers.forEach(customer => {
+        //                     if (customer === item[key]) {
+        //                         // arrOfClinicsDescriptions.push(item.);
+        //                         console.log(item)
+        //                     }
+        //                 });
+        //                 return null;
+        //             })
+        //         });
+        //     })
+        // });
 
         if (this.props.location.state !== undefined) {
             this.setState({search: this.props.location.state});
@@ -26,6 +62,7 @@ class ClinicsPage extends Component {
             return item.basicInfo.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
         });
         return(
+
             <div className="container clinics-page">
                 <div className="clinic-banner d-flex align-items-end">
                     <div className="clinic-search d-flex align-items-center justify-content-center">
@@ -41,7 +78,7 @@ class ClinicsPage extends Component {
                         <div key={index} className="clinic-row">
                             <div className="d-flex">
                                 <div className="clinic-row-image">
-                                    <img src={require(`../../images/clinics/${item.additionalData.image}`)} alt={item.basicInfo.shortName}/>
+                                    <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
                                 </div>
                                 <div className="clinic-row-description">
                                     <h3>{item.basicInfo.name}</h3>

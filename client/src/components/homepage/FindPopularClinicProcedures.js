@@ -14,7 +14,7 @@ const FindPopularClinicProcedures = () => {
                     {data.map((item, index) => {
                         return (
                             <div className="card col-lg-3 col-sm-6 text-white" key={index}>
-                                <img src={require(`../../images/${item.img}`)} className="card-img" alt="..." />
+                                <img src={require(`../../assets/images/${item.img}`)} className="card-img" alt="..." />
                                 <div className="card-img-overlay">
                                     <h5 className="card-title">{item.title}</h5>
                                     <div className="card-information">

@@ -15,15 +15,15 @@ class Clinic extends Component {
                             <div key={index}>
                                 <div className="clinic-subpage-header">
                                     <h2>{item.basicInfo.name}</h2>
-                                    <p>{item.institutionAdress.region},
+                                    <p>{item.institutionAddress.region},
                                         {" "}
-                                        {item.institutionAdress.city}
+                                        {item.institutionAddress.city}
                                     </p>
                                 </div>
                                 <div className="row">
                                     <div className="col-8">
                                         <div>
-                                            <img className="w-100" src={require(`../../images/clinics/${item.additionalData.image}`)} alt={item.basicInfo.name}/>
+                                            <img className="w-100" src={require(`../../assets/images/clinics/${item.additionalData.image}`)} alt={item.basicInfo.name}/>
                                         </div>
                                         <div className="clinic-subpage-information">
                                             <h4>Overview</h4>
@@ -38,20 +38,20 @@ class Clinic extends Component {
                                         <div className="clinic-subpage-contact">
                                             <div >
                                                 <h4>Localisation</h4>
-                                                <p>Region: {item.institutionAdress.region}</p>
-                                                <p>Zip Code: {item.institutionAdress.zipCode}</p>
-                                                <p>City: {item.institutionAdress.city}</p>
-                                                <p>Street: {item.institutionAdress.street}</p>
-                                                <p>Building Number: {item.institutionAdress.buildingNumber}</p>
+                                                <p>Region: {item.institutionAddress.region}</p>
+                                                <p>Zip Code: {item.institutionAddress.zipCode}</p>
+                                                <p>City: {item.institutionAddress.city}</p>
+                                                <p>Street: {item.institutionAddress.street}</p>
+                                                <p>Building Number: {item.institutionAddress.buildingNumber}</p>
                                             </div>
-                                            <iframe title="map" src={item.institutionAdress.map}/>
+                                            <iframe title="map" src={item.institutionAddress.map}/>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         )
                     }
-                    // return <p>{this.props.match.params.id}</p>
+                    return null;
                 })}
             </div>
         )
