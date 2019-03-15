@@ -20,14 +20,14 @@ const SignIn = (props) => {
                         </div>
                         <div className="modal-body">
                             <form>
-                            <div className="form-group">
-                                <label htmlFor="recipient-name" className="col-form-label">Login:</label>
-                                <input type="text" className="form-control" id="login" onChange={(e) => context.login(e.target.value)} />
-                            </div>
-                            <div className="form-group">
-                                <label htmlFor="recipient-name" className="col-form-label">Password:</label>
-                                <input type="password" className="form-control" id="password" onChange={(e) => context.password(e.target.value)} />
-                            </div>
+                                <div className="form-group">
+                                    <label htmlFor="recipient-name" className="col-form-label">Login:</label>
+                                    <input type="text" className="form-control" id="login" onChange={(e) => context.login(e.target.value)} />
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="recipient-name" className="col-form-label">Password:</label>
+                                    <input type="password" className="form-control" id="password" onChange={(e) => context.password(e.target.value)} />
+                                </div>
                             </form>
                             {context.alert ? <div className="text-danger">Wrong login or password!</div> : null}
                         </div>

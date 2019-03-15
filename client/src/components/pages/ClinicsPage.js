@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import clinics from '../../database/clinics.json';
-import {Link} from "react-router-dom";
+import '../../assets/styles/clinicpage.scss'
+import { Link } from "react-router-dom";
 // import axios from "axios";
 
 class ClinicsPage extends Component {
@@ -11,7 +12,7 @@ class ClinicsPage extends Component {
     onChange = e => {
         this.setState({search: e.target.value})
     };
-    componentDidMount(props){
+    componentDidMount(){
         // const { match: { params } } = this.props;
         // let customers = [];
         // token(response => {
@@ -76,11 +77,11 @@ class ClinicsPage extends Component {
                 {filtered.map((item, index) => {
                     return (
                         <div key={index} className="clinic-row">
-                            <div className="d-flex">
-                                <div className="clinic-row-image">
+                            <div className="row">
+                                <div className="col-4 clinic-row-image">
                                     <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
                                 </div>
-                                <div className="clinic-row-description">
+                                <div className="col-8 clinic-row-description">
                                     <h3>{item.basicInfo.name}</h3>
                                     <p>{item.additionalData.facilityDescription}</p>
                                     <div className="d-flex justify-content-end">

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import '../assets/styles/footer.scss'
 class Footer extends React.Component {
 
     changeLanguage = (e) => {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Homepage from './components/pages/Homepage';
-// import ClinicsPage from './components/pages/ClinicsPage'
 import {IntlProvider} from "react-intl";
 import { addLocaleData } from "react-intl";
 import locale_en from 'react-intl/locale-data/en';
@@ -19,6 +18,7 @@ import './assets/styles/app.scss';
 import ProtectedRoute from './components/pages/ProtectedRoute'
 import { AuthProvider } from './components/context/AuthContext'
 import ClinicsPage from "./components/pages/ClinicsPage";
+
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
 class App extends Component {
@@ -72,15 +72,13 @@ class App extends Component {
                                 <Switch>
                                     <Route path="/" exact
                                         render={(render) => (<Homepage {...render}
-                                           languages={availableLanguages}
-                                           changeLanguage={this.changeLanguage}
-                                           language={this.state.language} />
-                                           )}/>
+                                        languages={availableLanguages}
+                                        changeLanguage={this.changeLanguage}
+                                        language={this.state.language} />
+                                    )}/>
                                     <ProtectedRoute path="/clinics" component={ClinicsPage} />
                                     <ProtectedRoute path="/clinic/:id" component={Clinic} />
                                 </Switch>
-                                    {/*<Route path="/clinics" component={ProtectedClinicsPage} />*/}
-                                    {/*<Route path={'/clinic/:id'} component={Clinic} />*/}
                                 <Footer changeLanguage={this.props.changeLanguage} />
                             </div>
                         </AuthProvider>

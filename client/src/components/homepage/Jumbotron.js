@@ -1,6 +1,7 @@
 import React from 'react';
 import {FormattedMessage} from 'react-intl';
 import JumbotronSearch from "./JumbotronSearch";
+import {AuthConsumer} from "../context/AuthContext";
 
 const Jumbotron = () => {
     return (
@@ -30,7 +31,17 @@ const Jumbotron = () => {
                     </ul>
                 </div>
             </div>
-            <JumbotronSearch/>
+            <AuthConsumer>
+                {({ isAuth }) => (
+                    <div>
+                        {
+                            isAuth
+                                ? <JumbotronSearch />
+                                : null
+                        }
+                    </div>
+                )}
+            </AuthConsumer>
         </div>
      );
 };

@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data/doctorPatientReviews.json';
+import data from '../../database/doctorPatientReviews.json';
 
 const DoctorsPatientsRewievs = () => {
     return (

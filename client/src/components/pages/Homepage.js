@@ -6,6 +6,7 @@ import ChooseClinic from '../homepage/ChooseClinic';
 import HelpMe from '../homepage/HelpMe';
 import Destination from '../homepage/Destination';
 import HowItWorks from '../homepage/HowItWorks';
+import '../../assets/styles/homepage.scss';
 
 class Homepage extends React.Component {
     render() {

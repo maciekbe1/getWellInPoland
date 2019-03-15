@@ -1,5 +1,5 @@
 import React from 'react';
-import data from './data/findPopularClinicProcedures.json';
+import data from '../../database/findPopularClinicProcedures.json';
 import {FormattedMessage} from 'react-intl';
 
 

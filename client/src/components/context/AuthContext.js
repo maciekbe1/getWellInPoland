@@ -1,6 +1,6 @@
 import React from 'react';
-import axios from 'axios';
 import sha256 from 'js-sha256';
+import { getToken } from '../../api/api'
 
 const AuthContext = React.createContext();
 
@@ -13,62 +13,77 @@ class AuthProvider extends React.Component {
         wrongData: false
     };
 
-    // constructor() {
-    //     super()
-    //     this.login = this.login.bind(this)
-    //     this.logout = this.logout.bind(this)
-    // }
     componentWillMount() {
-        if (sessionStorage.getItem('token')) {
-            this.setState({isAuth: true});
+        const token  =  localStorage.getItem('gwtoken');
+
+        if (token) {
+            const objToken = JSON.parse(window.atob(token));
+            if (Date.parse(objToken.expTime) < new Date().getTime()) {
+                getToken(objToken.data).then(() => {
+                        this.setState({
+                            isAuth: true
+                        });
+
+                        let expDate = new Date();
+                        expDate.setTime(expDate.getTime() + (15 * 60 * 1000));
+                        const tokenData = {
+                            data: objToken.data,
+                            expTime: expDate
+                        };
+
+                        const newToken = window.btoa(JSON.stringify(tokenData));
+                        localStorage.setItem('gwtoken', newToken);
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+            } else if (Date.parse(objToken.expTime) > new Date().getTime()) {
+                this.setState({
+                    isAuth: true
+                })
+            }
         }
     }
-
-    // login() {
-    //     localStorage.setItem('token', true);
-    //     setTimeout(() => this.setState({ isAuth: true }), 1000)
-    // }
-
-    // logout() {
-    //     localStorage.removeItem('token');
-    //     this.setState({ isAuth: false })
-    // }
-
     onSignInHandle = () => {
-        let data = window.btoa(`${this.state.login}:${this.state.password}`);
-        axios({
-            method: 'post',
-            url: 'http://localhost/index.php/restApi/generateJWT',
-            data: {
-                "user-key" : data
-            }
-        })
-        .then( response => {
-            console.log(response);
+        let userData = window.btoa(`${this.state.login}:${this.state.password}`);
+        getToken(userData).then( response => {
+            // console.log(response);
             this.setState({
                 token: response.data.token,
                 wrongData: false,
                 isAuth: true
-            })
-            sessionStorage.setItem('token', response.data.token);
+            });
+
+            let expDate = new Date();
+
+            expDate.setTime(expDate.getTime() + (15 * 60 * 1000));
+
+            const tokenData = {
+                data: userData,
+                expTime: expDate
+            };
+
+            const token = window.btoa(JSON.stringify(tokenData));
+
+            localStorage.setItem('gwtoken', token);
             document.querySelector('#closeLoginModal').click();
             document.querySelector('#login').value = '';
             document.querySelector('#password').value = '';
-        })
-        .catch(error => {
+
+        }).catch(error => {
             console.log(error);
             this.setState({wrongData: true})
         })
-    }
+    };
 
     onLoginHandle = (data) => {
         this.setState({login: data})
-    }
+    };
 
     onPasswordHandle = (data) => {
         let password = sha256(data);
         this.setState({password: password})
-    }
+    };
 
     onSignOut = () => {
         this.setState({
@@ -76,9 +91,9 @@ class AuthProvider extends React.Component {
             password: null,
             token: null,
             isAuth: false
-        })
-        sessionStorage.removeItem('token');
-    }
+        });
+        localStorage.removeItem('gwtoken');
+    };
 
     render() {
         return (
