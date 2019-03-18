@@ -32,6 +32,12 @@ $transition: .3s;
       align-items: center;
     }
   }
+  .navbar-collapse {
+    flex-direction: column;
+  }
+  .logged-as-name {
+    color: #000 !important;
+  }
   .dropdown-menu {
     border-radius: 0;
     border: 0;

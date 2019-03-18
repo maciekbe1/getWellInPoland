@@ -2,7 +2,7 @@ import React from 'react';
 import sha256 from 'js-sha256';
 import { getToken } from '../../api/api'
 
-const AuthContext = React.createContext();
+export const AuthContext = React.createContext();
 
 class AuthProvider extends React.Component {
     state = {
@@ -14,26 +14,30 @@ class AuthProvider extends React.Component {
     };
 
     componentWillMount() {
-        const token  =  localStorage.getItem('gwtoken');
+        const token  = localStorage.getItem('gwtoken');
+        const login  = localStorage.getItem('gwlog');
+
+        this.setState({login})
 
         if (token) {
             const objToken = JSON.parse(window.atob(token));
+
             if (Date.parse(objToken.expTime) < new Date().getTime()) {
                 getToken(objToken.data).then(() => {
-                        this.setState({
-                            isAuth: true
-                        });
+                    this.setState({
+                        isAuth: true
+                    });
 
-                        let expDate = new Date();
-                        expDate.setTime(expDate.getTime() + (15 * 60 * 1000));
-                        const tokenData = {
-                            data: objToken.data,
-                            expTime: expDate
-                        };
+                    let expDate = new Date();
+                    expDate.setTime(expDate.getTime() + (15 * 60 * 1000));
+                    const tokenData = {
+                        data: objToken.data,
+                        expTime: expDate
+                    };
 
-                        const newToken = window.btoa(JSON.stringify(tokenData));
-                        localStorage.setItem('gwtoken', newToken);
-                    })
+                    const newToken = window.btoa(JSON.stringify(tokenData));
+                    localStorage.setItem('gwtoken', newToken);
+                })
                     .catch(error => {
                         console.log(error);
                     })
@@ -44,6 +48,7 @@ class AuthProvider extends React.Component {
             }
         }
     }
+
     onSignInHandle = () => {
         let userData = window.btoa(`${this.state.login}:${this.state.password}`);
         getToken(userData).then( response => {
@@ -66,6 +71,7 @@ class AuthProvider extends React.Component {
             const token = window.btoa(JSON.stringify(tokenData));
 
             localStorage.setItem('gwtoken', token);
+            localStorage.setItem('gwlog', this.state.login);
             document.querySelector('#closeLoginModal').click();
             document.querySelector('#login').value = '';
             document.querySelector('#password').value = '';
@@ -85,7 +91,9 @@ class AuthProvider extends React.Component {
         this.setState({password: password})
     };
 
-    onSignOut = () => {
+    onSignOut = (e) => {
+        console.log('ok');
+
         this.setState({
             login: null,
             password: null,
@@ -104,7 +112,8 @@ class AuthProvider extends React.Component {
                     password: this.onPasswordHandle,
                     signIn: this.onSignInHandle,
                     signOut: this.onSignOut,
-                    alert: this.state.wrongData
+                    alert: this.state.wrongData,
+                    name: this.state.login
                 }}
             >
                 {this.props.children}

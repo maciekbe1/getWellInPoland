@@ -18,6 +18,7 @@ import './assets/styles/app.scss';
 import ProtectedRoute from './components/pages/ProtectedRoute'
 import { AuthProvider } from './components/context/AuthContext'
 import ClinicsPage from "./components/pages/ClinicsPage";
+import PopularClinics from "./components/findPopularClinicProcedures/PopularClinics"
 
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
@@ -76,8 +77,9 @@ class App extends Component {
                                         changeLanguage={this.changeLanguage}
                                         language={this.state.language} />
                                     )}/>
-                                    <ProtectedRoute path="/clinics" component={ClinicsPage} />
-                                    <ProtectedRoute path="/clinic/:id" component={Clinic} />
+                                    <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
+                                    <ProtectedRoute path="/allClinics" component={ClinicsPage} />
+                                    <Route path="/:popularClinics" component={PopularClinics}/>
                                 </Switch>
                                 <Footer changeLanguage={this.props.changeLanguage} />
                             </div>

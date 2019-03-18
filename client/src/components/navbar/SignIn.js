@@ -19,7 +19,7 @@ const SignIn = (props) => {
                             </button>
                         </div>
                         <div className="modal-body">
-                            <form>
+                            <form onKeyPress={e => e.key === 'Enter' ? context.signIn() : null}>
                                 <div className="form-group">
                                     <label htmlFor="recipient-name" className="col-form-label">Login:</label>
                                     <input type="text" className="form-control" id="login" onChange={(e) => context.login(e.target.value)} />

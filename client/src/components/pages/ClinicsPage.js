@@ -3,6 +3,7 @@ import clinics from '../../database/clinics.json';
 import '../../assets/styles/clinicpage.scss'
 import { Link } from "react-router-dom";
 // import axios from "axios";
+import slugify from '@sindresorhus/slugify';
 
 class ClinicsPage extends Component {
     state = {
@@ -63,35 +64,45 @@ class ClinicsPage extends Component {
             return item.basicInfo.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
         });
         return(
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol className="breadcrumb">
+                        <div className="container d-flex">
+                            <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">All Clinics</li>
+                        </div>
+                    </ol>
+                </nav>
 
-            <div className="container clinics-page">
-                <div className="clinic-banner d-flex align-items-end">
-                    <div className="clinic-search d-flex align-items-center justify-content-center">
-                        <div className="col-sm-5 text-center">
-                            <h2>Help me find a clinic</h2>
-                            <input value={this.state.search} onChange={this.onChange} type="text" className="form-control" placeholder="find a clinic"/>
+                <div className="container clinics-page">
+                    <div className="clinic-banner d-flex align-items-end">
+                        <div className="clinic-search d-flex align-items-center justify-content-center">
+                            <div className="col-sm-5 text-center">
+                                <h2>Help me find a clinic</h2>
+                                <input value={this.state.search} onChange={this.onChange} type="text" className="form-control" placeholder="find a clinic"/>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <h1>List of clinics</h1>
-                {filtered.map((item, index) => {
-                    return (
-                        <div key={index} className="clinic-row">
-                            <div className="row">
-                                <div className="col-4 clinic-row-image">
-                                    <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
-                                </div>
-                                <div className="col-8 clinic-row-description">
-                                    <h3>{item.basicInfo.name}</h3>
-                                    <p>{item.additionalData.facilityDescription}</p>
-                                    <div className="d-flex justify-content-end">
-                                        <Link className="btn-primary btn" to={`clinic/${item.id}`}>Show</Link>
+                    <h1>List of clinics</h1>
+                    {filtered.map((item, index) => {
+                        return (
+                            <div key={index} className="clinic-row">
+                                <div className="row">
+                                    <div className="col-4 clinic-row-image">
+                                        <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
+                                    </div>
+                                    <div className="col-8 clinic-row-description">
+                                        <h3>{item.basicInfo.name}</h3>
+                                        <p>{item.additionalData.facilityDescription}</p>
+                                        <div className="d-flex justify-content-end">
+                                            <Link className="btn-primary btn" to={`/allClinics/clinic/${slugify(item.basicInfo.shortName)}`}>Show</Link>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })}
+                </div>
             </div>
         );
     }
