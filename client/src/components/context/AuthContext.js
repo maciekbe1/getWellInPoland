@@ -17,7 +17,7 @@ class AuthProvider extends React.Component {
         const token  = localStorage.getItem('gwtoken');
         const login  = localStorage.getItem('gwlog');
 
-        this.setState({login})
+        this.setState({login});
 
         if (token) {
             const objToken = JSON.parse(window.atob(token));

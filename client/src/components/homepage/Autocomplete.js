@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom';
-import { getClinicsName, arrOfClinicsName } from '../../api/api'
+import {clinicsName, getToken} from '../../api/api'
+import axios from "axios";
 
 class Autocomplete extends Component {
     state = {
@@ -10,9 +11,16 @@ class Autocomplete extends Component {
         arrOfClinicsName: []
     };
     componentWillMount() {
-        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
-        getClinicsName(userData);
-        this.setState({arrOfClinicsName: arrOfClinicsName});
+         const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
+        getToken(userData).then((res) => {
+            axios.get(clinicsName, {
+                headers: {
+                    'Authorization': res.data.token
+                }
+            }).then(res => {
+                return this.setState({arrOfClinicsName: res.data});
+            });
+        });
     }
 
     findClinicOnChange = e => {

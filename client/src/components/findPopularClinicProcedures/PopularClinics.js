@@ -8,7 +8,7 @@ import slugify from "@sindresorhus/slugify"
 
 class PopularClinics extends Component{
     state = {
-        clinics: this.props.location.state
+        clinics: this.props.location.pathname.substring(1, this.props.location.pathname.length)
     };
     render() {
         return (
@@ -17,13 +17,13 @@ class PopularClinics extends Component{
                     <ol className="breadcrumb">
                         <div className="container d-flex flex-wrap">
                         <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                        <li className="breadcrumb-item active" aria-current="page">{this.state.clinics.title}</li>
+                        <li className="breadcrumb-item active" aria-current="page">{this.state.clinics}</li>
                         </div>
                     </ol>
                 </nav>
                 <div className="container">
                     {clinicProcedures.map((item, index) => {
-                        if(item.title === this.state.clinics.title) {
+                        if(item.title === this.state.clinics) {
                             return (
                                 <div key={index}>
                                     <p>{item.description}</p>
@@ -36,7 +36,7 @@ class PopularClinics extends Component{
                 <div className="clinics-page container">
                     {
                         clinics.map((item, index) =>{
-                           if (item.companyRegist.specialization === this.state.clinics.title && item.companyRegist.premium) {
+                           if (item.companyRegist.specialization === this.state.clinics && item.companyRegist.premium) {
                                return (
                                    <div key={index} className="clinic-row row">
                                        <div className="col-sm-4 clinic-row-image">

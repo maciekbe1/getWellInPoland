@@ -1,56 +1,39 @@
 import React, { Component } from 'react'
-import clinics from '../../database/clinics.json';
+// import clinics from '../../database/clinics.json';
 import '../../assets/styles/clinicpage.scss'
 import { Link } from "react-router-dom";
 // import axios from "axios";
 import slugify from '@sindresorhus/slugify';
+import {clinicsObj, getToken} from "../../api/api";
+import axios from "axios";
 
 class ClinicsPage extends Component {
     state = {
         search: "",
-        clinics: clinics,
+        clinicsApi: [],
+        isLoading: true
     };
     onChange = e => {
         this.setState({search: e.target.value})
     };
-    componentDidMount(){
-        // const { match: { params } } = this.props;
-        // let customers = [];
-        // token(response => {
-        //     axios.get(`http://localhost/index.php/restApi/request/model/KliSlo/pagination/{"page":1, "itemsPerPage":1000}`, {
-        //         headers: {
-        //             'Authorization': response.data.token
-        //         }
-        //     }).then( response => {
-        //         response.data.data.objects.forEach(item => {
-        //             Object.keys(item).filter(key => {
-        //                 if(item[key] === '30002960') {
-        //                     // console.log(item)
-        //                     customers.push(item.KLS_ID_KLIENT);
-        //                 }
-        //                 return null;
-        //             });
-        //         });
-        //
-        //     });
-        //     axios.get(`http://localhost/index.php/restApi/request/model/KlientOpis/pagination/{"page":1, "itemsPerPage":10000}`, {
-        //         headers: {
-        //             'Authorization': response.data.token
-        //         }
-        //     }).then(response => {
-        //         response.data.data.objects.forEach(item => {
-        //             Object.keys(item).filter(key => {
-        //                 customers.forEach(customer => {
-        //                     if (customer === item[key]) {
-        //                         // arrOfClinicsDescriptions.push(item.);
-        //                         console.log(item)
-        //                     }
-        //                 });
-        //                 return null;
-        //             })
-        //         });
-        //     })
-        // });
+
+    componentDidMount(props) {
+        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
+        getToken(userData).then((res) => {
+            axios.get(clinicsObj, {
+                headers: {
+                    'Authorization': res.data.token
+                }
+            }).then(res => {
+                console.log(res.data);
+                return this.setState({
+                    clinicsApi:res.data,
+                    isLoading: false
+                })
+            }).catch(err => {
+                console.log(err);
+            });
+        });
 
         if (this.props.location.state !== undefined) {
             this.setState({search: this.props.location.state});
@@ -59,10 +42,33 @@ class ClinicsPage extends Component {
         }
     }
     render() {
-        let filteredItems = this.state.clinics;
-        const filtered = filteredItems.filter(item => {
-            return item.basicInfo.name.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
-        });
+        let content;
+        if (this.state.isLoading) {
+            content = <div>Loading...</div>;
+        } else {
+            let filteredItems = this.state.clinicsApi;
+            const filtered = filteredItems.filter(item => {
+                return item.nazwa.value.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
+            });
+
+            content = filtered.map((item, index) => {
+                return (
+                    <div key={index} className="clinic-row row">
+                        <div className="col-sm-4 clinic-row-image">
+                            <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
+                        </div>
+                        <div className="col-sm-8 clinic-row-description">
+                            <h3>{item.nazwa.value}</h3>
+                            <p>{item.KlientOpis_facility_description_i599rc.value}</p>
+                            <div className="d-flex justify-content-end">
+                                <Link className="btn-primary btn" to={`/allClinics/clinic/${slugify(item.kli_id.value)}`}>Show</Link>
+                            </div>
+                        </div>
+                    </div>
+                )
+            })
+        }
+
         return(
             <div>
                 <nav aria-label="breadcrumb">
@@ -84,22 +90,7 @@ class ClinicsPage extends Component {
                         </div>
                     </div>
                     <h1>List of clinics</h1>
-                    {filtered.map((item, index) => {
-                        return (
-                            <div key={index} className="clinic-row row">
-                                    <div className="col-sm-4 clinic-row-image">
-                                        <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
-                                    </div>
-                                    <div className="col-sm-8 clinic-row-description">
-                                        <h3>{item.basicInfo.name}</h3>
-                                        <p>{item.additionalData.facilityDescription}</p>
-                                        <div className="d-flex justify-content-end">
-                                            <Link className="btn-primary btn" to={`/allClinics/clinic/${slugify(item.basicInfo.shortName)}`}>Show</Link>
-                                        </div>
-                                    </div>
-                            </div>
-                        )
-                    })}
+                    {content}
                 </div>
             </div>
         );

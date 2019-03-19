@@ -63,6 +63,9 @@ $transition: .3s;
             position: relative;
             margin: 10px 0;
             background-color: transparent;
+            .card-img {
+                transition: .3s;
+            }
             .card-img-overlay {
                 display: flex;
                 justify-content: center;
@@ -74,6 +77,7 @@ $transition: .3s;
                     position: absolute;
                     bottom: 0;
                     background-color: rgba(0, 0, 0, 0.5);
+                    transition: .3s;
                     p {
                         margin: 0;
                     }

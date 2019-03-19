@@ -19,6 +19,7 @@ import ProtectedRoute from './components/pages/ProtectedRoute'
 import { AuthProvider } from './components/context/AuthContext'
 import ClinicsPage from "./components/pages/ClinicsPage";
 import PopularClinics from "./components/findPopularClinicProcedures/PopularClinics"
+import NotFound from './components/pages/NotFound'
 
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
@@ -81,6 +82,7 @@ class App extends Component {
                                     <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
                                     <ProtectedRoute path="/allClinics" component={ClinicsPage} />
                                     <Route path="/:popularClinics" component={PopularClinics}/>
+                                    <Route component={NotFound} />
                                 </Switch>
                                 <Footer changeLanguage={this.props.changeLanguage} />
                             </div>
