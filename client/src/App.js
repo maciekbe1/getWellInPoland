@@ -77,6 +77,7 @@ class App extends Component {
                                         changeLanguage={this.changeLanguage}
                                         language={this.state.language} />
                                     )}/>
+                                    <Route path="/allClinics/clinic-premium/:clinic" component={Clinic}/>
                                     <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
                                     <ProtectedRoute path="/allClinics" component={ClinicsPage} />
                                     <Route path="/:popularClinics" component={PopularClinics}/>

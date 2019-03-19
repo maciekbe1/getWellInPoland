@@ -92,7 +92,7 @@ class AuthProvider extends React.Component {
     };
 
     onSignOut = (e) => {
-        console.log('ok');
+        // console.log('ok');
 
         this.setState({
             login: null,

@@ -67,7 +67,7 @@ class ClinicsPage extends Component {
             <div>
                 <nav aria-label="breadcrumb">
                     <ol className="breadcrumb">
-                        <div className="container d-flex">
+                        <div className="container d-flex flex-wrap">
                             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
                             <li className="breadcrumb-item active" aria-current="page">All Clinics</li>
                         </div>
@@ -86,19 +86,17 @@ class ClinicsPage extends Component {
                     <h1>List of clinics</h1>
                     {filtered.map((item, index) => {
                         return (
-                            <div key={index} className="clinic-row">
-                                <div className="row">
-                                    <div className="col-4 clinic-row-image">
+                            <div key={index} className="clinic-row row">
+                                    <div className="col-sm-4 clinic-row-image">
                                         <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
                                     </div>
-                                    <div className="col-8 clinic-row-description">
+                                    <div className="col-sm-8 clinic-row-description">
                                         <h3>{item.basicInfo.name}</h3>
                                         <p>{item.additionalData.facilityDescription}</p>
                                         <div className="d-flex justify-content-end">
                                             <Link className="btn-primary btn" to={`/allClinics/clinic/${slugify(item.basicInfo.shortName)}`}>Show</Link>
                                         </div>
                                     </div>
-                                </div>
                             </div>
                         )
                     })}

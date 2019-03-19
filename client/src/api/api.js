@@ -3,8 +3,8 @@ import axios from "axios";
 let klient = `http://localhost/index.php/restApi/request/model/Klient/pagination/{"page":1, "itemsPerPage":1000}`;
 let klislo = `http://localhost/index.php/restApi/request/model/KliSlo/pagination/{"page":1, "itemsPerPage":10000}`;
 
-export const getToken = (userData) => {
-    return axios({
+export async function getToken(userData) {
+    return await axios({
         method: 'post',
         url: 'http://localhost/index.php/restApi/generateJWT',
         headers: {
@@ -62,6 +62,20 @@ export const getClinicsName = (userData) => {
         });
     })
 };
+
+export async function gettk(userData) {
+    return await axios({
+        method: 'post',
+        url: 'http://localhost/index.php/restApi/generateJWT',
+        headers: {
+            'X-PINGOTHER': 'pingpong',
+            'Content-Type': 'application/json'
+        },
+        data: {
+            "user-key": userData
+        }
+    })
+}
 // export const duplicated = () => {
 //     return arrOfClinicsName.filter((item,index,self) => self.indexOf(item)===index);
 // }
