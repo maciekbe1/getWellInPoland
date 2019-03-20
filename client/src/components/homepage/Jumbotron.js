@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {FormattedMessage} from 'react-intl';
 import JumbotronSearch from "./JumbotronSearch";
-import {AuthConsumer} from "../context/AuthContext";
+import AuthContext from "../context/auth-context";
 
 const Jumbotron = () => {
+    const context = useContext(AuthContext)
     return (
         <div className="jumbotron jumbotron-fluid">
             <div className="container">
@@ -31,17 +32,10 @@ const Jumbotron = () => {
                     </ul>
                 </div>
             </div>
-            <AuthConsumer>
-                {({ isAuth }) => (
-                    <div>
-                        {
-                            isAuth
-                                ? <JumbotronSearch />
-                                : null
-                        }
-                    </div>
-                )}
-            </AuthConsumer>
+            {context.isAuth
+            ? <JumbotronSearch />
+            : null
+            }
         </div>
      );
 };

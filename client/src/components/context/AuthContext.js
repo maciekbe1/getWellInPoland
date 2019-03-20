@@ -1,8 +1,7 @@
 import React from 'react';
 import sha256 from 'js-sha256';
 import { getToken } from '../../api/api'
-
-export const AuthContext = React.createContext();
+import AuthContext from './auth-context'
 
 class AuthProvider extends React.Component {
     state = {
@@ -122,6 +121,4 @@ class AuthProvider extends React.Component {
     }
 }
 
-const AuthConsumer = AuthContext.Consumer;
-
-export { AuthProvider, AuthConsumer }
+export default AuthProvider;

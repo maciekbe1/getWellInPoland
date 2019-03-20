@@ -16,7 +16,7 @@ import Navbar from "./components/Navbar";
 import Footer from './components/Footer';
 import './assets/styles/app.scss';
 import ProtectedRoute from './components/pages/ProtectedRoute'
-import { AuthProvider } from './components/context/AuthContext'
+import AuthProvider  from './components/context/AuthContext'
 import ClinicsPage from "./components/pages/ClinicsPage";
 import PopularClinics from "./components/findPopularClinicProcedures/PopularClinics"
 import NotFound from './components/pages/NotFound'
@@ -64,30 +64,30 @@ class App extends Component {
         return (
             <IntlProvider locale={this.state.language} messages={messages[this.state.language]}>
                 <div className="App">
-                    <BrowserRouter>
-                        <AuthProvider>
-                            <div>
-                                <Navbar
+                    <AuthProvider>
+                        <BrowserRouter>
+                        <div>
+                            <Navbar
+                                languages={availableLanguages}
+                                changeLanguage={this.changeLanguage}
+                                language={this.state.language}/>
+                            <Switch>
+                                <Route path="/" exact
+                                    render={(render) => (<Homepage {...render}
                                     languages={availableLanguages}
                                     changeLanguage={this.changeLanguage}
-                                    language={this.state.language}/>
-                                <Switch>
-                                    <Route path="/" exact
-                                        render={(render) => (<Homepage {...render}
-                                        languages={availableLanguages}
-                                        changeLanguage={this.changeLanguage}
-                                        language={this.state.language} />
-                                    )}/>
-                                    <Route path="/allClinics/clinic-premium/:clinic" component={Clinic}/>
-                                    <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
-                                    <ProtectedRoute path="/allClinics" component={ClinicsPage} />
-                                    <Route path="/:popularClinics" component={PopularClinics}/>
-                                    <Route component={NotFound} />
-                                </Switch>
-                                <Footer changeLanguage={this.props.changeLanguage} />
+                                    language={this.state.language} />
+                                )}/>
+                                <Route path="/allClinics/clinic-premium/:clinic" component={Clinic}/>
+                                <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
+                                <ProtectedRoute path="/allClinics" component={ClinicsPage} />
+                                <Route path="/:popularClinics" component={PopularClinics}/>
+                                <Route component={NotFound} />
+                            </Switch>
+                            <Footer changeLanguage={this.props.changeLanguage} />
                             </div>
-                        </AuthProvider>
-                    </BrowserRouter>
+                        </BrowserRouter>
+                    </AuthProvider>
                 </div>
             </IntlProvider>
         );
