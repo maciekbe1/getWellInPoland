@@ -4,9 +4,10 @@ import '../assets/styles/navbar.scss'
 
 import logo from '../assets/images/logo/logo_male.png';
 import SignIn from './navbar/SignIn';
-import {AuthConsumer} from "./context/AuthContext";
+import AuthContext from "./context/auth-context";
 
 class Navbar extends React.Component {
+    static contextType = AuthContext
     changeLanguage = (e) => {
         this.props.changeLanguage(e.target.value);
     };
@@ -32,26 +33,22 @@ class Navbar extends React.Component {
                         </div>
 
                         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                            <AuthConsumer>
-                                {(context) => (
-                                    <ul className="navbar-nav ml-auto">
-                                        <li className="nav-item">
-                                            {
-                                                context.isAuth
-                                                    ? <a className="nav-link" href="#test" onClick={(e) => e.preventDefault()}>Logged in as: <span className="logged-as-name">{context.name.toLowerCase()}</span></a>
-                                                    : null
-                                            }
-                                        </li>
-                                        <li className="nav-item">
-                                            {
-                                                !context.isAuth
-                                                    ? <a className="nav-link" href="#test" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
-                                                    : <Link className="nav-link" to="/" onClick={context.signOut}>Sign out</Link>
-                                            }
-                                        </li>
-                                    </ul>
-                                )}
-                            </AuthConsumer>
+                            <ul className="navbar-nav ml-auto">
+                                <li className="nav-item">
+                                    {
+                                        this.context.isAuth
+                                            ? <a className="nav-link" href="#test" onClick={(e) => e.preventDefault()}>Logged in as: <span className="logged-as-name">{this.context.name.toLowerCase()}</span></a>
+                                            : null
+                                    }
+                                </li>
+                                <li className="nav-item">
+                                    {
+                                        !this.context.isAuth
+                                            ? <a className="nav-link" href="#test" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
+                                            : <Link className="nav-link" to="/" onClick={this.context.signOut}>Sign out</Link>
+                                    }
+                                </li>
+                            </ul>
                             <ul className="navbar-nav ml-auto">
                                 <li className="nav-item dropdown">
                                     <a className="nav-link dropdown-toggle" href="#test" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -71,17 +68,11 @@ class Navbar extends React.Component {
                                     </div>
                                 </li>
                                 <li className="nav-item">
-                                    <AuthConsumer>
-                                        {({ isAuth, login, logout }) => (
-                                            <div>
-                                                {
-                                                    isAuth
-                                                        ? <Link className="nav-link" to="/allClinics">Clinics</Link>
-                                                        : null
-                                                }
-                                            </div>
-                                        )}
-                                    </AuthConsumer>
+                                    {
+                                        this.context.isAuth
+                                            ? <Link className="nav-link" to="/allClinics">Clinics</Link>
+                                            : null
+                                    }
                                 </li>
                                 <li className="nav-item nav-link">
                                     <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">
