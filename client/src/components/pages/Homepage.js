@@ -15,8 +15,8 @@ class Homepage extends React.Component {
             <div className="homepage-wrapper">
                 <Jumbotron />
                 <ChooseClinic />
-                <OurPartners/>
                 <FindPopularClinicProcedures />
+                <OurPartners/>
                 <DoctorsPatientsReviews />
                 <HelpMe />
                 <Destination />

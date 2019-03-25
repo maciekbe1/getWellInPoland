@@ -12,11 +12,11 @@ class Clinic extends Component {
         clinicName: null
     };
     componentDidMount() {
-        console.log(this.props.match.params);
+        // console.log(this.props.match.params);
         const url = `https://qang.bpower2.com/index.php/restApi/gwipClinics?id=${this.props.match.params.clinic}&details=true`;
 
         axios.get(url).then(res => {
-            console.log(res.data);
+            // console.log(res.data);
             return this.setState({
                 clinicsApi:res.data,
                 clinicName: res.data.nazwa.value,
