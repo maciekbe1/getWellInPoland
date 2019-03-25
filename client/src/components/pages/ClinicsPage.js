@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-// import clinics from '../../database/clinics.json';
 import '../../assets/styles/clinicpage.scss'
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import slugify from '@sindresorhus/slugify';
-import {clinicsObj, getToken} from "../../api/api";
+import {clinicsObj} from "../../api/api";
 import axios from "axios";
+// import { css } from '@emotion/core';
+import { HashLoader } from 'react-spinners';
+import SkeletonRow from '../skeletons/SkeletonRow'
 
 class ClinicsPage extends Component {
     state = {
@@ -17,22 +18,15 @@ class ClinicsPage extends Component {
         this.setState({search: e.target.value})
     };
 
-    componentDidMount(props) {
-        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
-        getToken(userData).then((res) => {
-            axios.get(clinicsObj, {
-                headers: {
-                    'Authorization': res.data.token
-                }
-            }).then(res => {
-                console.log(res.data);
-                return this.setState({
-                    clinicsApi:res.data,
-                    isLoading: false
-                })
-            }).catch(err => {
-                console.log(err);
-            });
+    componentWillMount(props) {
+        axios.get(clinicsObj).then(res => {
+            // console.log(res.data);
+            return this.setState({
+                clinicsApi:res.data,
+                isLoading: false
+            })
+        }).catch(err => {
+            console.log(err);
         });
 
         if (this.props.location.state !== undefined) {
@@ -42,9 +36,28 @@ class ClinicsPage extends Component {
         }
     }
     render() {
+        // const override = css`
+        //     position: absolute;
+        //     top: 50%;
+        //     left 50%;
+        // `;
         let content;
         if (this.state.isLoading) {
-            content = <div>Loading...</div>;
+            content = <div>
+                <h1>Loading...</h1>
+                <SkeletonRow/>
+                <div className="spinner-container">
+                    <div className="spinner-position">
+                    <HashLoader
+                        sizeUnit={"px"}
+                        size={70}
+                        margin={"6px"}
+                        color={'#fff'}
+                        loading={this.state.isLoading}
+                    />
+                    </div>
+            </div>
+            </div>
         } else {
             let filteredItems = this.state.clinicsApi;
             const filtered = filteredItems.filter(item => {
@@ -52,20 +65,23 @@ class ClinicsPage extends Component {
             });
 
             content = filtered.map((item, index) => {
-                return (
-                    <div key={index} className="clinic-row row">
-                        <div className="col-sm-4 clinic-row-image">
-                            <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
-                        </div>
-                        <div className="col-sm-8 clinic-row-description">
-                            <h3>{item.nazwa.value}</h3>
-                            <p>{item.KlientOpis_facility_description_i599rc.value}</p>
-                            <div className="d-flex justify-content-end">
-                                <Link className="btn-primary btn" to={`/allClinics/clinic/${slugify(item.kli_id.value)}`}>Show</Link>
+                if(item["KlientData_businessType-21306_c2abvm"].value === "1") {
+                    return (
+                        <div key={index} className="clinic-row row">
+                            <div className="col-sm-4 clinic-row-image">
+                                <img src={require(`../../assets/images/clinics/1.jpg`)} alt={index}/>
+                            </div>
+                            <div className="col-sm-8 clinic-row-description">
+                                <h3>{item.nazwa.value}</h3>
+                                <p>{item.KlientOpis_facility_description_i599rc.value}</p>
+                                <div className="d-flex justify-content-end">
+                                    <Link className="btn-primary btn" to={`/all-clinics/clinic/${slugify(item.kli_id.value)}`}>Show</Link>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                )
+                    )
+                }
+                return null;
             })
         }
 

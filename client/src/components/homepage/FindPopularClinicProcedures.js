@@ -14,7 +14,7 @@ const FindPopularClinicProcedures = () => {
                     </h2>
                     {data.map((item, index) => {
                         return (
-                            <Link className="card col-lg-3 col-sm-6 text-white" to={{pathname:`/${item.title}`, state: item }} key={index}>
+                            <Link className="card col-lg-3 col-sm-6 text-white" to={`/find-popular/${item.type}`} key={index}>
                                 <img src={require(`../../assets/images/${item.img}`)} className="card-img" alt="..." />
                                 <div className="card-img-overlay">
                                     <h5 className="card-title">{item.title}</h5>

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import { Link } from 'react-router-dom';
-import {clinicsName, getToken} from '../../api/api'
+import { clinicsObj } from '../../api/api'
 import axios from "axios";
 
 class Autocomplete extends Component {
@@ -10,17 +10,20 @@ class Autocomplete extends Component {
         text: "",
         arrOfClinicsName: []
     };
-    componentWillMount() {
-         const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
-        getToken(userData).then((res) => {
-            axios.get(clinicsName, {
-                headers: {
-                    'Authorization': res.data.token
+    componentDidMount() {
+        let clinicsNameArr = [];
+        axios.get(clinicsObj).then(res => {
+            res.data.map(item => {
+                if (item["KlientData_businessType-21306_c2abvm"].value === "1") {
+                    clinicsNameArr.push(item.nazwa.value);
                 }
-            }).then(res => {
-                return this.setState({arrOfClinicsName: res.data});
-            });
+                return null;
+            })
         });
+        // axios.get(clinicsName).then(res => {
+        //     return this.setState({arrOfClinicsName: res.data});
+        // });
+        this.setState({arrOfClinicsName: clinicsNameArr})
     }
 
     findClinicOnChange = e => {
@@ -55,7 +58,7 @@ class Autocomplete extends Component {
                     <input value={this.state.search} onChange={this.findClinicOnChange} type="text" className="form-control" placeholder="find a clinic" />
                     {this.renderSuggestion()}
                 </div>
-                <Link to={{ pathname: '/allClinics', state: this.state.search }} className="btn btn-primary find-clinics">Search</Link>
+                <Link to={{ pathname: '/all-clinics', state: this.state.search }} className="btn btn-primary find-clinics">Search</Link>
             </div>
         )
     }

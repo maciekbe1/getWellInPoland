@@ -1,6 +1,6 @@
 [
   {
-    "id" : "1",
+    "id" : "30102448",
     "basicInfo" : {
       "name" : "Centrum Opieki i Rehabilitacji LEŚNA POLANA - premium",
       "shortName" : "Leśna Polana premium",
@@ -12,7 +12,7 @@
     "companyRegist" : {
       "type" : "Clinic",
       "premium": true,
-      "specialization": "Orthopedics",
+      "specialization": "orthopedics",
       "services": ["Orthopedics Consultation", "Knee Replacement", "Knee ligament surgery (ACL)"]
     },
     "institutionAddress" : {
@@ -39,7 +39,7 @@
     }
   },
   {
-    "id" : "2",
+    "id" : "30102458",
     "basicInfo" : {
       "name" : "Centrum Implantologii i Stomatologii Estetycznej SYPIEŃ - Premium",
       "shortName" : "Sypień Stomatologia premium",
@@ -51,7 +51,7 @@
     "companyRegist" : {
       "type" : "Clinic",
       "premium": true,
-      "specialization": "Dentistry",
+      "specialization": "dentistry",
       "services": ["Teeth Whitening", "Dental Implant", "Teeth Cleaning"]
     },
     "institutionAddress" : {
@@ -90,7 +90,7 @@
     "companyRegist" : {
       "type" : "Clinic",
       "premium": false,
-      "specialization": "Orthopedics",
+      "specialization": "orthopedics",
       "services": ["Orthopedics Consultation", "Knee Replacement", "Knee ligament surgery (ACL)"]
     },
     "institutionAddress" : {

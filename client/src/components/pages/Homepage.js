@@ -7,14 +7,16 @@ import HelpMe from '../homepage/HelpMe';
 import Destination from '../homepage/Destination';
 import HowItWorks from '../homepage/HowItWorks';
 import '../../assets/styles/homepage.scss';
+import OurPartners from "../homepage/OurPartners";
 
 class Homepage extends React.Component {
     render() {
         return (
             <div className="homepage-wrapper">
                 <Jumbotron />
-                <FindPopularClinicProcedures />
                 <ChooseClinic />
+                <OurPartners/>
+                <FindPopularClinicProcedures />
                 <DoctorsPatientsReviews />
                 <HelpMe />
                 <Destination />

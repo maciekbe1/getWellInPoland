@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from "react-router-dom";
 import axios from 'axios'
-import { getToken } from "../../api/api";
+import NotFound from '../../components/pages/NotFound'
+
 
 class Clinic extends Component {
     state = {
@@ -11,32 +12,29 @@ class Clinic extends Component {
         clinicName: null
     };
     componentDidMount() {
-        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
+        console.log(this.props.match.params);
         const url = `https://qang.bpower2.com/index.php/restApi/gwipClinics?id=${this.props.match.params.clinic}&details=true`;
-        getToken(userData).then((res) => {
-            axios.get(url, {
-                headers: {
-                    'Authorization': res.data.token
-                }
-            }).then(res => {
-                console.log(res.data);
-                return this.setState({
-                    clinicsApi:res.data,
-                    clinicName: res.data.nazwa.value,
-                    isLoading: false
-                })
-            }).catch(err => {
-                console.log(err);
-            });
+
+        axios.get(url).then(res => {
+            console.log(res.data);
+            return this.setState({
+                clinicsApi:res.data,
+                clinicName: res.data.nazwa.value,
+                isLoading: false
+            })
+        }).catch(err => {
+            console.log(err);
         });
     }
 
     render() {
         const {clinicsApi} = this.state;
         let content;
+        let breadcrumb = "";
         if (this.state.isLoading) {
             content = <div>Loading...</div>;
-        } else {
+        } else if(clinicsApi["KlientData_businessType-21306_c2abvm"].value === "1") {
+            breadcrumb = this.state.clinicName;
             content = <div>
                 <div className="clinic-subpage-header">
                     <h2>{clinicsApi.nazwa.value}</h2>
@@ -75,6 +73,9 @@ class Clinic extends Component {
                     </div>
                 </div>
             </div>
+        } else {
+            breadcrumb = "not found";
+            content = <NotFound location={this.props.location}/>
         }
         return(
             <div>
@@ -82,8 +83,8 @@ class Clinic extends Component {
                     <ul className="breadcrumb">
                         <div className="container d-flex flex-wrap">
                             <li className="breadcrumb-item"><Link to="/">Home</Link></li>
-                            <li className="breadcrumb-item"><Link to="/allClinics">All Clinics</Link></li>
-                            <li className="breadcrumb-item active" aria-current="page">{this.state.clinicName}</li>
+                            <li className="breadcrumb-item"><Link to="/all-clinics">All Clinics</Link></li>
+                            <li className="breadcrumb-item active" aria-current="page">{breadcrumb}</li>
                         </div>
                     </ul>
                 </nav>

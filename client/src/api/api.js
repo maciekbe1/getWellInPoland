@@ -7,7 +7,7 @@ export const clinicsName = `https://qang.bpower2.com/index.php/restApi/gwipClini
 export function getToken(userData) {
     return axios({
         method: 'post',
-        url: 'https://qang.bpower2.com/index.php/RestAPI',
+        url: 'https://cors-anywhere.herokuapp.com/https://qang.bpower2.com/index.php/restApi/generateJWT',
         headers: {
             'X-PINGOTHER': 'pingpong',
             'Content-Type': 'application/json'

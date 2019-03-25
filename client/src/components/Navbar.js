@@ -70,7 +70,7 @@ class Navbar extends React.Component {
                                 <li className="nav-item">
                                     {
                                         this.context.isAuth
-                                            ? <Link className="nav-link" to="/allClinics">Clinics</Link>
+                                            ? <Link className="nav-link" to="/all-clinics">Clinics</Link>
                                             : null
                                     }
                                 </li>

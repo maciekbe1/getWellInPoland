@@ -3,12 +3,12 @@ import clinics from '../../database/clinics'
 import clinicProcedures from '../../database/findPopularClinicProcedures'
 import '../../assets/styles/clinicpage.scss'
 import { Link } from 'react-router-dom'
-import slugify from "@sindresorhus/slugify"
+// import slugify from "@sindresorhus/slugify"
 
 
 class PopularClinics extends Component{
     state = {
-        clinics: this.props.location.pathname.substring(1, this.props.location.pathname.length)
+        clinics: this.props.match.params.popularClinics,
     };
     render() {
         return (
@@ -23,7 +23,7 @@ class PopularClinics extends Component{
                 </nav>
                 <div className="container">
                     {clinicProcedures.map((item, index) => {
-                        if(item.title === this.state.clinics) {
+                        if(item.type === this.state.clinics) {
                             return (
                                 <div key={index}>
                                     <p>{item.description}</p>
@@ -46,7 +46,7 @@ class PopularClinics extends Component{
                                            <h3>{item.basicInfo.name}</h3>
                                            <p>{item.additionalData.facilityDescription}</p>
                                            <div className="d-flex justify-content-end">
-                                               <Link className="btn-primary btn" to={`/allClinics/clinic-premium/${slugify(item.basicInfo.shortName)}`}>Show</Link>
+                                               <Link className="btn-primary btn" to={`/find-popular/clinic-premium/${item.id}`}>Show</Link>
                                            </div>
                                        </div>
                                    </div>

@@ -78,13 +78,13 @@ class App extends Component {
                                     changeLanguage={this.changeLanguage}
                                     language={this.state.language} />
                                 )}/>
-                                <Route path="/allClinics/clinic-premium/:clinic" component={Clinic}/>
-                                <ProtectedRoute path="/allClinics/clinic/:clinic" component={Clinic} />
-                                <ProtectedRoute path="/allClinics" component={ClinicsPage} />
-                                <Route path="/:popularClinics" component={PopularClinics}/>
+                                <ProtectedRoute path="/all-clinics/clinic/:clinic" component={Clinic} />
+                                <ProtectedRoute path="/all-clinics" component={ClinicsPage} />
+                                <Route path="/find-popular/clinic-premium/:clinic" component={Clinic}/>
+                                <Route path="/find-popular/:popularClinics" component={PopularClinics}/>
                                 <Route component={NotFound} />
                             </Switch>
-                            <Footer changeLanguage={this.props.changeLanguage} />
+                            <Footer changeLanguage={this.changeLanguage} />
                             </div>
                         </BrowserRouter>
                     </AuthProvider>

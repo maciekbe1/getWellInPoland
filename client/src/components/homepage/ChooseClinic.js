@@ -9,7 +9,7 @@ const ChooseClinic = () => {
                 <div className="row">
                     <div className="col-lg-6 offeset-lg-3 text-center">
                         <h2>
-                           <FormattedMessage id="choose.clinic.title" defaultMessage={`Need help choosing the right clinic?`}/>
+                           <FormattedMessage id="choose.clinic.title" defaultMessage={`Need help diagnose the disease?`}/>
                         </h2>
                         <p>
                             <FormattedMessage id="choose.clinic.text" defaultMessage={`The Get Well in Poland Care Team is here to help you with any questions you have. Just let us know what you are looking for and we will get back to you as soon as possible.`}/>

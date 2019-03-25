@@ -1,6 +1,7 @@
 [
     {
         "title": "Dentistry",
+        "type": "dentistry",
         "img": "dentist.jpg",
         "t1": "All-on-4",
         "t2": "Dental Implant",
@@ -9,6 +10,7 @@
     },
     {
         "title": "Oncology",
+        "type": "oncology",
         "img": "oncology.jpg",
         "t1": "Acute Leukemia Treatment",
         "t2": "Breast Cancer Treatmentt",
@@ -17,6 +19,7 @@
     },
     {
         "title": "Ophthalmology",
+        "type": "ophthalmology",
         "img": "ophtalmology.jpg",
         "t1": "Cataract Surgery",
         "t2": "Eyelid Surgeryt",
@@ -25,6 +28,7 @@
     },
     {
         "title": "Orthopedics",
+        "type": "orthopedics",
         "img": "orthopedics.jpg",
         "t1": "Knee Arthroscopy",
         "t2": "Knee Replacement",
