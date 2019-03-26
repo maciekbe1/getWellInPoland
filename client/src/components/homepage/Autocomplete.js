@@ -16,7 +16,7 @@ class Autocomplete extends Component {
         this.setState({search: value});
         if (value.length > 0) {
            const regexp = new RegExp(`${value}`, 'i');
-           suggestions = this.context.clinicsName.sort().filter(v => regexp.test(v))
+           suggestions = this.context.premiumClinicsName.sort().filter(v => regexp.test(v))
         }
         this.setState({suggestions: suggestions})
     };
