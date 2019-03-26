@@ -8,14 +8,14 @@ function OurPartners() {
     const globalState = useContext(GlobalState);
 
     let content = null;
-    if (globalState.clinicsDetails.length === 0) {
+    if (globalState.premiumClinics.length === 0) {
         content = <h1>Loading...</h1>
     } else {
-        content = globalState.premiumClinics.slice(0, 3).map((item, index) => {
+        content = globalState.premiumClinics.slice(0, 4).map((item, index) => {
             return (
                 <div key={index} className="col-sm-3 col-6">
                     <div className="">
-                        <Link to={`/all-clinics/clinic/${item.kli_id.value}`}><img alt={""} src={require(`../../assets/images/${item.kli_id.value}.jpg`)}/></Link>
+                        <Link to={`/all-clinics/clinic/${item.kli_id.value}`}><img alt={""} src={require(`../../assets/images/30102448.jpg`)}/></Link>
                     </div>
                 </div>
             )
