@@ -3,7 +3,7 @@ import axios from 'axios';
 import GlobalContext from './global-context';
 
 const GlobalState = props => {
-    const [clinicsDetails, setClinicsDetails] = useState([])
+    // const [clinicsDetails, setClinicsDetails] = useState([])
     const [premiumClinics, setPremiumClinics] = useState([])
     const [clinicsName, setClinicsName] = useState([])
     // const [content, setContent] = useState([])
@@ -22,16 +22,19 @@ const GlobalState = props => {
                 }
             })
             return (
-                setClinicsDetails(res.data),
+                // setClinicsDetails(res.data),
                 setPremiumClinics(arr)
             )
         })
     }, [])
 
+    // console.log(premiumClinics, clinicsDetails);
+
+
     return(
         <GlobalContext.Provider
             value={{
-                clinicsDetails,
+                // clinicsDetails,
                 premiumClinics,
                 clinicsName
             }}

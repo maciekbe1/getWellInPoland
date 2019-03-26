@@ -2,9 +2,6 @@ import React, { Component } from 'react'
 import '../../assets/styles/clinicpage.scss'
 import { Link } from "react-router-dom";
 import slugify from '@sindresorhus/slugify';
-import {clinicsObj} from "../../api/api";
-import axios from "axios";
-// import { css } from '@emotion/core';
 import { HashLoader } from 'react-spinners';
 import SkeletonRow from '../skeletons/SkeletonRow'
 import GlobalState from '../context/global-context';
@@ -27,8 +24,6 @@ class ClinicsPage extends Component {
         }
     }
     render() {
-        console.log(this.context.clinicsDetails.length);
-
         let content;
         if (!this.context.premiumClinics.length) {
             content = <div>
