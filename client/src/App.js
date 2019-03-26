@@ -20,6 +20,7 @@ import AuthProvider  from './components/context/AuthContext'
 import ClinicsPage from "./components/pages/ClinicsPage";
 import PopularClinics from "./components/findPopularClinicProcedures/PopularClinics"
 import NotFound from './components/pages/NotFound'
+import GlobalState from './components/context/GlobalState';
 
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
@@ -65,28 +66,30 @@ class App extends Component {
             <IntlProvider locale={this.state.language} messages={messages[this.state.language]}>
                 <div className="App">
                     <AuthProvider>
-                        <BrowserRouter>
-                        <div>
-                            <Navbar
-                                languages={availableLanguages}
-                                changeLanguage={this.changeLanguage}
-                                language={this.state.language}/>
-                            <Switch>
-                                <Route path="/" exact
-                                    render={(render) => (<Homepage {...render}
-                                    languages={availableLanguages}
-                                    changeLanguage={this.changeLanguage}
-                                    language={this.state.language} />
-                                )}/>
-                                <ProtectedRoute path="/all-clinics/clinic/:clinic" component={Clinic} />
-                                <ProtectedRoute path="/all-clinics" component={ClinicsPage} />
-                                <Route path="/find-popular/clinic-premium/:clinic" component={Clinic}/>
-                                <Route path="/find-popular/:popularClinics" component={PopularClinics}/>
-                                <Route component={NotFound} />
-                            </Switch>
-                            <Footer changeLanguage={this.changeLanguage} />
-                            </div>
-                        </BrowserRouter>
+                        <GlobalState>
+                            <BrowserRouter>
+                                <div>
+                                    <Navbar
+                                        languages={availableLanguages}
+                                        changeLanguage={this.changeLanguage}
+                                        language={this.state.language}/>
+                                    <Switch>
+                                        <Route path="/" exact
+                                            render={(render) => (<Homepage {...render}
+                                            languages={availableLanguages}
+                                            changeLanguage={this.changeLanguage}
+                                            language={this.state.language} />
+                                        )}/>
+                                        <ProtectedRoute path="/all-clinics/clinic/:clinic" component={Clinic} />
+                                        <ProtectedRoute path="/all-clinics" component={ClinicsPage} />
+                                        <Route path="/find-popular/clinic-premium/:clinic" component={Clinic}/>
+                                        <Route path="/find-popular/:popularClinics" component={PopularClinics}/>
+                                        <Route component={NotFound} />
+                                    </Switch>
+                                    <Footer changeLanguage={this.changeLanguage} />
+                                </div>
+                            </BrowserRouter>
+                        </GlobalState>
                     </AuthProvider>
                 </div>
             </IntlProvider>
