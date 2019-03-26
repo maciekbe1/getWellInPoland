@@ -7,28 +7,19 @@ import axios from "axios";
 // import { css } from '@emotion/core';
 import { HashLoader } from 'react-spinners';
 import SkeletonRow from '../skeletons/SkeletonRow'
+import GlobalState from '../context/global-context';
 
 class ClinicsPage extends Component {
+    static contextType = GlobalState;
+
     state = {
         search: "",
-        clinicsApi: [],
-        isLoading: true
     };
     onChange = e => {
         this.setState({search: e.target.value})
     };
 
     componentWillMount(props) {
-        axios.get(clinicsObj).then(res => {
-            // console.log(res.data);
-            return this.setState({
-                clinicsApi:res.data,
-                isLoading: false
-            })
-        }).catch(err => {
-            console.log(err);
-        });
-
         if (this.props.location.state !== undefined) {
             this.setState({search: this.props.location.state});
         } else {
@@ -36,13 +27,10 @@ class ClinicsPage extends Component {
         }
     }
     render() {
-        // const override = css`
-        //     position: absolute;
-        //     top: 50%;
-        //     left 50%;
-        // `;
+        console.log(this.context.clinicsDetails.length);
+
         let content;
-        if (this.state.isLoading) {
+        if (!this.context.premiumClinics.length) {
             content = <div>
                 <h1>Loading...</h1>
                 <SkeletonRow/>
@@ -53,19 +41,17 @@ class ClinicsPage extends Component {
                         size={70}
                         margin={"6px"}
                         color={'#fff'}
-                        loading={this.state.isLoading}
                     />
                     </div>
-            </div>
+                </div>
             </div>
         } else {
-            let filteredItems = this.state.clinicsApi;
+            let filteredItems = this.context.premiumClinics;
             const filtered = filteredItems.filter(item => {
                 return item.nazwa.value.toLowerCase().indexOf(this.state.search.toLowerCase()) !== -1;
             });
 
             content = filtered.map((item, index) => {
-                if(item["KlientData_businessType-21306_c2abvm"].value === "1") {
                     return (
                         <div key={index} className="clinic-row row">
                             <div className="col-sm-4 clinic-row-image">
@@ -80,8 +66,6 @@ class ClinicsPage extends Component {
                             </div>
                         </div>
                     )
-                }
-                return null;
             })
         }
 
@@ -112,4 +96,5 @@ class ClinicsPage extends Component {
         );
     }
 }
+
 export default ClinicsPage;

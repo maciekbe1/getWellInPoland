@@ -110,6 +110,20 @@ $transition: .3s;
         }
       }
     }
+    .our-partners {
+        margin: 50px 0;
+        .row {
+            justify-content: center;
+            align-items: center;
+        }
+        img {
+            width: 100%;
+            transition: .3s;
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+    }
     .doctor-patient-reviews {
         padding-top: 44px;
         padding-bottom: 73px;
