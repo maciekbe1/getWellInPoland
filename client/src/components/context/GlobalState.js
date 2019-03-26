@@ -3,9 +3,10 @@ import axios from 'axios';
 import GlobalContext from './global-context';
 
 const GlobalState = props => {
-    // const [clinicsDetails, setClinicsDetails] = useState([])
+    const [clinicsDetails, setClinicsDetails] = useState([])
     const [premiumClinics, setPremiumClinics] = useState([])
     const [clinicsName, setClinicsName] = useState([])
+    const [premiumClinicsName, setPremiumClinicsName] = useState([])
     // const [content, setContent] = useState([])
 
     useEffect(() => {
@@ -15,20 +16,23 @@ const GlobalState = props => {
         })
         axios.get('https://qang.bpower2.com/index.php/restApi/gwipClinics?details=true')
         .then(res => {
-            let arr = []
+            let arrPremiumClinics = []
+            let arrPremiumClinicsName = []
             res.data.forEach( clinic => {
                 if(clinic["KlientData_businessType-21306_c2abvm"].value === "1"){
-                    arr.push(clinic)
+                    arrPremiumClinics.push(clinic)
+                    arrPremiumClinicsName.push(clinic.nazwa.value)
                 }
             })
             return (
-                // setClinicsDetails(res.data),
-                setPremiumClinics(arr)
+                setClinicsDetails(res.data),
+                setPremiumClinics(arrPremiumClinics),
+                setPremiumClinicsName(arrPremiumClinicsName)
             )
         })
     }, [])
 
-    // console.log(premiumClinics, clinicsDetails);
+    console.log(premiumClinics, clinicsDetails);
 
 
     return(
@@ -36,7 +40,7 @@ const GlobalState = props => {
             value={{
                 // clinicsDetails,
                 premiumClinics,
-                clinicsName
+                premiumClinicsName
             }}
         >
         {props.children}
