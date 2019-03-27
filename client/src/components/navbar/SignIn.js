@@ -3,8 +3,6 @@ import AuthContext from "../context/auth-context";
 
 const SignIn = (props) => {
 
-    // const wrongText = props.wrongText ? <div className="text-danger">Wrong login or password!</div> : null;
-
     const context = useContext(AuthContext)
 
     return (
@@ -12,7 +10,7 @@ const SignIn = (props) => {
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="loginModalLabel">Please sign in</h5>
+                    <h5 className="modal-title" id="loginModalLabel">Authorization with Bpower2 account</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>
@@ -32,7 +30,9 @@ const SignIn = (props) => {
                 </div>
                 <div className="modal-footer">
                     <button id="closeLoginModal" type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                    <button type="button" className="btn btn-primary" onClick={context.signIn}>Sign in</button>
+                    <button type="button" className="btn btn-primary" onClick={context.signIn}>
+                        {context.loading ? <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> : 'Sign in'}
+                    </button>
                 </div>
                 </div>
             </div>
