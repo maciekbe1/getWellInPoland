@@ -9,7 +9,8 @@ class AuthProvider extends React.Component {
         login: null,
         password: null,
         token: null,
-        wrongData: false
+        wrongData: false,
+        loading: false
     };
 
     componentWillMount() {
@@ -50,12 +51,14 @@ class AuthProvider extends React.Component {
 
     onSignInHandle = () => {
         let userData = window.btoa(`${this.state.login}:${this.state.password}`);
+        this.setState({loading: true})
         getToken(userData).then( response => {
             // console.log(response);
             this.setState({
                 token: response.data.token,
                 wrongData: false,
-                isAuth: true
+                isAuth: true,
+                loading: false
             });
 
             let expDate = new Date();
@@ -77,7 +80,10 @@ class AuthProvider extends React.Component {
 
         }).catch(error => {
             console.log(error);
-            this.setState({wrongData: true})
+            this.setState({
+                wrongData: true,
+                loading: false
+            })
         })
     };
 
@@ -112,7 +118,8 @@ class AuthProvider extends React.Component {
                     signIn: this.onSignInHandle,
                     signOut: this.onSignOut,
                     alert: this.state.wrongData,
-                    name: this.state.login
+                    name: this.state.login,
+                    loading: this.state.loading
                 }}
             >
                 {this.props.children}
