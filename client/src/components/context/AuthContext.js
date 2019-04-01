@@ -2,6 +2,7 @@ import React from 'react';
 import sha256 from 'js-sha256';
 import { getToken } from '../../api/api'
 import AuthContext from './auth-context'
+import axios from 'axios'
 
 class AuthProvider extends React.Component {
     state = {
@@ -10,7 +11,8 @@ class AuthProvider extends React.Component {
         password: null,
         token: null,
         wrongData: false,
-        loading: false
+        loading: false,
+        phpSession: null
     };
 
     componentWillMount() {
@@ -78,6 +80,24 @@ class AuthProvider extends React.Component {
             document.querySelector('#login').value = '';
             document.querySelector('#password').value = '';
 
+            const formData = new FormData();
+
+            formData.append('LoginForm[username]', this.state.login);
+            formData.append('LoginForm[password]', this.state.phpSession);
+            formData.append('LoginForm[rememberMe]', 0);
+
+            axios({
+                method: 'post',
+                url: 'https://qang.bpower2.com/index.php/site/login',
+                data: formData,
+                config: { headers: {'Content-Type': 'multipart/form-data' }}
+            })
+            .catch(function (response) {
+                //handle error
+                console.log(response);
+            });
+
+
         }).catch(error => {
             console.log(error);
             this.setState({
@@ -93,7 +113,10 @@ class AuthProvider extends React.Component {
 
     onPasswordHandle = (data) => {
         let password = sha256(data);
-        this.setState({password: password})
+        this.setState({
+            password: password,
+            phpSession: data
+        })
     };
 
     onSignOut = (e) => {
@@ -107,6 +130,15 @@ class AuthProvider extends React.Component {
         });
         sessionStorage.removeItem('gwtoken');
         sessionStorage.removeItem('gwlog');
+
+        axios({
+            method: 'post',
+            url: 'https://qang.bpower2.com/site/logout',
+        })
+        .catch(function (response) {
+            //handle error
+            console.log(response);
+        });
     };
 
     render() {
