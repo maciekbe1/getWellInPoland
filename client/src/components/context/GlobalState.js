@@ -19,7 +19,7 @@ const GlobalState = props => {
             let arrPremiumClinics = []
             let arrPremiumClinicsName = []
             res.data.forEach( clinic => {
-                if(clinic["KlientData_businessType-21306_c2abvm"].value === "1"){
+                if(clinic["klientdata_businesstype21306_c2abvm"].value === "1"){
                     arrPremiumClinics.push(clinic)
                     arrPremiumClinicsName.push(clinic.nazwa.value)
                 }
