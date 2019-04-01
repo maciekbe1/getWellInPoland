@@ -14,8 +14,8 @@ class AuthProvider extends React.Component {
     };
 
     componentWillMount() {
-        const token  = localStorage.getItem('gwtoken');
-        const login  = localStorage.getItem('gwlog');
+        const token  = sessionStorage.getItem('gwtoken');
+        const login  = sessionStorage.getItem('gwlog');
 
         this.setState({login});
 
@@ -36,7 +36,7 @@ class AuthProvider extends React.Component {
                     };
 
                     const newToken = window.btoa(JSON.stringify(tokenData));
-                    localStorage.setItem('gwtoken', newToken);
+                    sessionStorage.setItem('gwtoken', newToken);
                 })
                     .catch(error => {
                         console.log(error);
@@ -72,8 +72,8 @@ class AuthProvider extends React.Component {
 
             const token = window.btoa(JSON.stringify(tokenData));
 
-            localStorage.setItem('gwtoken', token);
-            localStorage.setItem('gwlog', this.state.login);
+            sessionStorage.setItem('gwtoken', token);
+            sessionStorage.setItem('gwlog', this.state.login);
             document.querySelector('#closeLoginModal').click();
             document.querySelector('#login').value = '';
             document.querySelector('#password').value = '';
@@ -105,7 +105,8 @@ class AuthProvider extends React.Component {
             token: null,
             isAuth: false
         });
-        localStorage.removeItem('gwtoken');
+        sessionStorage.removeItem('gwtoken');
+        sessionStorage.removeItem('gwlog');
     };
 
     render() {
