@@ -20,11 +20,11 @@ class Navbar extends React.Component {
                             <img src={logo} alt="logo"/>
                         </Link>
                         <div className="any-questions">
-                            <i className="fas fa-user-nurse fa-2x"></i>
-                            <div>
-                                <p>Do you have any questions?</p>
-                                <span>+00 000 000 000</span>
-                            </div>
+                            {/*<i className="fas fa-user-nurse fa-2x"></i>*/}
+                            {/*<div>*/}
+                            {/*    <p>Do you have any questions?</p>*/}
+                            {/*    <span>+00 000 000 000</span>*/}
+                            {/*</div>*/}
                         </div>
                         <div className="nav-btn text-center">
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

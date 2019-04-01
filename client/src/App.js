@@ -82,8 +82,8 @@ class App extends Component {
                                         )}/>
                                         <ProtectedRoute path="/all-clinics/clinic/:clinic" component={Clinic} />
                                         <ProtectedRoute path="/all-clinics" component={ClinicsPage} />
-                                        <Route path="/find-popular/clinic-premium/:clinic" component={Clinic}/>
-                                        <Route path="/find-popular/:popularClinics" component={PopularClinics}/>
+                                        <ProtectedRoute path="/find-popular/clinic-premium/:clinic" component={Clinic}/>
+                                        <ProtectedRoute path="/find-popular/:popularClinics" component={PopularClinics}/>
                                         <Route component={NotFound} />
                                     </Switch>
                                     <Footer changeLanguage={this.changeLanguage} />

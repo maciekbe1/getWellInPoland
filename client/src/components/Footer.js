@@ -12,19 +12,19 @@ class Footer extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-sm-8">
-                            <ul className="bottom-nav">
-                                <li className="first">Imprint</li>
-                                <li>About us</li>
-                                <li>Blog</li>
-                                <li>Second Opinion</li>
-                                <li>Business</li>
-                                <li>Our Team</li>
-                                <li>Careers</li>
-                                <li>Press</li>
-                                <li>Help</li>
-                            </ul>
+                            {/*<ul className="bottom-nav">*/}
+                            {/*    <li className="first">Imprint</li>*/}
+                            {/*    <li>About us</li>*/}
+                            {/*    <li>Blog</li>*/}
+                            {/*    <li>Second Opinion</li>*/}
+                            {/*    <li>Business</li>*/}
+                            {/*    <li>Our Team</li>*/}
+                            {/*    <li>Careers</li>*/}
+                            {/*    <li>Press</li>*/}
+                            {/*    <li>Help</li>*/}
+                            {/*</ul>*/}
 
-                            <p className="footer-notice">By using our site, you agree to our <a href="#test">Terms and Conditions</a> and <a href="#test">Privacy Policy</a>. Get Well in Poland does not provide medical advice, diagnosis or treatment. The information provided on this site is designed to support, not replace, the relationship that exists between a patient/site visitor and his/her existing physician.
+                            <p className="footer-notice">By using our site, you agree to our Terms and Conditionsand Privacy Policy. Get Well in Poland does not provide medical advice, diagnosis or treatment. The information provided on this site is designed to support, not replace, the relationship that exists between a patient/site visitor and his/her existing physician.
                             </p>
 
                             <p className="copyright">Copyright 2019 © Get Well in Poland GmbH</p>
@@ -43,12 +43,12 @@ class Footer extends React.Component {
                                 </ul>
                             </div>
                         </div>
-                        <div className="footer-icons col-sm-4">
-                            <i className="fab fa-facebook-f"></i>
-                            <i className="fab fa-twitter"></i>
-                            <i className="fab fa-linkedin-in"></i>
-                            <i className="fab fa-google-plus-g"></i>
-                        </div>
+                        {/*<div className="footer-icons col-sm-4">*/}
+                        {/*    <i className="fab fa-facebook-f"></i>*/}
+                        {/*    <i className="fab fa-twitter"></i>*/}
+                        {/*    <i className="fab fa-linkedin-in"></i>*/}
+                        {/*    <i className="fab fa-google-plus-g"></i>*/}
+                        {/*</div>*/}
                     </div>
                 </div>
             </div>

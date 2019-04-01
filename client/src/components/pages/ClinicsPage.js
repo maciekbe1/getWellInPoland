@@ -54,7 +54,7 @@ class ClinicsPage extends Component {
                             </div>
                             <div className="col-sm-8 clinic-row-description">
                                 <h3>{item.nazwa.value}</h3>
-                                <p>{item.KlientOpis_facility_description_i599rc.value}</p>
+                                <p>{item.klientopis_facility_description_i599rc.value}</p>
                                 <div className="d-flex justify-content-end">
                                     <Link className="btn-primary btn" to={`/all-clinics/clinic/${slugify(item.kli_id.value)}`}>Show</Link>
                                 </div>
