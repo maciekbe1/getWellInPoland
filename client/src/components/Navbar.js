@@ -44,29 +44,32 @@ class Navbar extends React.Component {
                                 <li className="nav-item">
                                     {
                                         !this.context.isAuth
-                                            ? <a className="nav-link" href="#test" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
+                                            ? <div className="d-flex navbar-nav">
+                                                <a className="nav-link" href="/" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
+                                                <Link className="nav-link btn btn-outline-secondary" to="/register">Sign up</Link>
+                                        </div>
                                             : <Link className="nav-link" to="/" onClick={this.context.signOut}>Sign out</Link>
                                     }
                                 </li>
                             </ul>
                             <ul className="navbar-nav ml-auto">
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#test" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        About
-                                    </a>
-                                    <div className="dropdown-menu container-fluid" aria-labelledby="navbarDropdown">
-                                        <div className="container">
-                                            <ul>
-                                                <li><a href="#test">About us</a></li>
-                                                <li><a href="#test">How it works</a></li>
-                                                <li><a href="#test">Blog</a></li>
-                                                <li><a href="#test">Pricing</a></li>
-                                                <li><a href="#test">Second Opinion</a></li>
-                                                <li><a href="#test">Business</a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
+                                {/*<li className="nav-item dropdown">*/}
+                                {/*    <a className="nav-link dropdown-toggle" href="#test" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*/}
+                                {/*        About*/}
+                                {/*    </a>*/}
+                                {/*    <div className="dropdown-menu container-fluid" aria-labelledby="navbarDropdown">*/}
+                                {/*        <div className="container">*/}
+                                {/*            <ul>*/}
+                                {/*                <li><a href="#test">About us</a></li>*/}
+                                {/*                <li><a href="#test">How it works</a></li>*/}
+                                {/*                <li><a href="#test">Blog</a></li>*/}
+                                {/*                <li><a href="#test">Pricing</a></li>*/}
+                                {/*                <li><a href="#test">Second Opinion</a></li>*/}
+                                {/*                <li><a href="#test">Business</a></li>*/}
+                                {/*            </ul>*/}
+                                {/*        </div>*/}
+                                {/*    </div>*/}
+                                {/*</li>*/}
                                 <li className="nav-item">
                                     {
                                         this.context.isAuth
@@ -74,13 +77,13 @@ class Navbar extends React.Component {
                                             : null
                                     }
                                 </li>
-                                <li className="nav-item nav-link">
-                                    <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">
-                                        {this.props.languages.map((lang, index) => {
-                                            return <option value={lang} key={index} >{lang.toUpperCase()}</option>
-                                        })}
-                                    </select>
-                                </li>
+                                {/*<li className="nav-item nav-link">*/}
+                                {/*    <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">*/}
+                                {/*        {this.props.languages.map((lang, index) => {*/}
+                                {/*            return <option value={lang} key={index} >{lang.toUpperCase()}</option>*/}
+                                {/*        })}*/}
+                                {/*    </select>*/}
+                                {/*</li>*/}
                             </ul>
                         </div>
                     </div>
