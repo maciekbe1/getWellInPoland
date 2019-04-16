@@ -1,0 +1,81 @@
+import React, {useEffect, useState} from "react";
+import axios from "axios";
+import { HashLoader } from 'react-spinners';
+import SkeletonText from "../skeletons/SkeletonText";
+import Info from '../contact/Info'
+
+const Contact = () => {
+    const [contactText, setContactText] = useState([]);
+    const [action, setAction] = useState('');
+    useEffect(() => {
+        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
+        const url = 'https://qang.bpower2.com/index.php/restApi/generateJWT';
+        const contact = 'https://qang.bpower2.com/index.php/restApi/request/model/WwwPosts/params/{"link_id":7}';
+
+        axios({
+            method: 'post',
+            url: url,
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            data: {
+                "user-key": userData
+            }
+        }).then(res => {
+                axios({
+                    method: 'get',
+                    url: contact,
+                    headers: {
+                        'Authorization': res.data.token
+                    }
+                }).then(res => {
+                    let contactArr = [];
+                    contactArr.push(res.data.data.objects);
+                    setTimeout(()=> {
+                        setAction(" text-list-grid");
+                    },1);
+                    return setContactText(contactArr);
+                })
+            });
+    }, []);
+
+    return(
+        <div className="container contact">
+            <h1>Information</h1>
+            {
+                contactText.length ?
+                <div className={"text-list" + action}>{
+                    contactText[0].map((item, index) => {
+                        switch (index) {
+                            //title of content
+                            case 0:
+                                return <Info key={index} text={item} />;
+                            //content
+                            case 1:
+                                return <Info key={index} text={item}/>;
+                            //if add more content than we predict
+                            default:
+                                return <Info key={index} text={item}/>
+                        }
+                    })
+
+                }
+                </div> : <div>
+                        <SkeletonText/>
+                        <div className="spinner-container">
+                            <div className="spinner-position">
+                                <HashLoader
+                                    sizeUnit={"px"}
+                                    size={70}
+                                    margin={"6px"}
+                                    color={'#fff'}
+                                />
+                            </div>
+                        </div>
+                    </div>
+            }
+        </div>
+    )
+};
+
+export default Contact

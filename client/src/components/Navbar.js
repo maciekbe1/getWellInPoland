@@ -42,6 +42,14 @@ class Navbar extends React.Component {
                                     }
                                 </li>
                                 <li className="nav-item">
+                                    <Link className="nav-link" to="/contact">Contact</Link>
+                                </li>
+                                {
+                                    this.context.isAuth
+                                        ? <li><Link className="nav-link" to="/all-clinics">Clinics</Link></li>
+                                        : null
+                                }
+                                <li className="nav-item">
                                     {
                                         !this.context.isAuth
                                             ? <div className="d-flex navbar-nav">
@@ -70,13 +78,13 @@ class Navbar extends React.Component {
                                 {/*        </div>*/}
                                 {/*    </div>*/}
                                 {/*</li>*/}
-                                <li className="nav-item">
-                                    {
-                                        this.context.isAuth
-                                            ? <Link className="nav-link" to="/all-clinics">Clinics</Link>
-                                            : null
-                                    }
-                                </li>
+                                {/*<li className="nav-item">*/}
+                                {/*    {*/}
+                                {/*        this.context.isAuth*/}
+                                {/*            ? <Link className="nav-link" to="/all-clinics">Clinics</Link>*/}
+                                {/*            : null*/}
+                                {/*    }*/}
+                                {/*</li>*/}
                                 {/*<li className="nav-item nav-link">*/}
                                 {/*    <select onChange={this.changeLanguage} value={this.props.language} className="nav-lang-change">*/}
                                 {/*        {this.props.languages.map((lang, index) => {*/}

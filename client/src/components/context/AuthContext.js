@@ -2,6 +2,7 @@ import React from 'react';
 import sha256 from 'js-sha256';
 import { getToken, getSessionId } from '../../api/api'
 import AuthContext from './auth-context'
+import Cookies from 'universal-cookie';
 
 class AuthProvider extends React.Component {
     state = {
@@ -52,9 +53,18 @@ class AuthProvider extends React.Component {
 
     onSignInHandle = () => {
         let userData = window.btoa(`${this.state.login}:${this.state.password}`);
-        this.setState({loading: true})
+        this.setState({loading: true});
 
-        getSessionId(this.state.login, this.state.phpSession)
+        getSessionId(this.state.login, this.state.phpSession).then(res => {
+            const cookies = new Cookies();
+
+            cookies.set('PHPSESSID', res.data.sessionKey, {
+                path: '/',
+                domain: 'qang.bpower2.com',
+                secure: true
+            });
+            console.log(cookies.getAll());
+        });
 
         getToken(userData).then( response => {
             // console.log(response);

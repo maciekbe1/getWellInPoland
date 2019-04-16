@@ -19,20 +19,7 @@
   padding: 20px;
   border:1px solid #cccccc;
   margin: 20px 0;
-  .skeleton-title {
-    height: 30px;
-    width: 50%;
-    background-color: #cccccc;
-    margin: 10px 0;
-    border-radius: 10px;
-  }
   .skeleton-row-description {
-    .skeleton-text {
-      height: 30px;
-      background-color: #cccccc;
-      margin: 10px 0;
-      border-radius: 10px;
-    }
     .skeleton-button {
       height: 30px;
       width: 60px;
@@ -41,12 +28,42 @@
       border-radius: 10px;
     }
   }
-  .skeleton-row-image {
-    .skeleton-img {
-      width: 100%;
-      height: 200px;
-      background-color: #cccccc;
-      border-radius: 10px;
-    }
+}
+.skeleton-img {
+  width: 100%;
+  height: 200px;
+  background-color: #cccccc;
+  border-radius: 10px;
+}
+.skeleton-title {
+  height: 30px;
+  width: 50%;
+  background-color: #cccccc;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+.skeleton-text {
+  height: 30px;
+  background-color: #cccccc;
+  margin: 10px 0;
+  border-radius: 10px;
+}
+
+.text-list-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 0 10px;
+  //grid-auto-rows: 12px;
+}
+.contact-info-list-text {
+  //border-radius: 10px;
+  width: 250px;
+  margin: 10px 0;
+  background-color: #133870;
+  color: #fff;
+  padding: 10px;
+  //grid-row-end: span 2;
+  p {
+    margin-bottom: 0;
   }
 }

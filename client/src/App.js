@@ -22,6 +22,7 @@ import PopularClinics from "./components/findPopularClinicProcedures/PopularClin
 import NotFound from './components/pages/NotFound'
 import GlobalState from './components/context/GlobalState';
 import RegisterPage from "./components/pages/RegisterPage";
+import Contact from './components/pages/Contact'
 
 addLocaleData([...locale_en, ...locale_de, ...locale_pl]);
 
@@ -82,6 +83,7 @@ class App extends Component {
                                             language={this.state.language} />
                                         )}/>
                                         <Route path="/register" component={RegisterPage}/>
+                                        <Route path="/contact" component={Contact}/>
                                         <ProtectedRoute path="/all-clinics/clinic/:clinic" component={Clinic} />
                                         <ProtectedRoute path="/all-clinics" component={ClinicsPage} />
                                         <ProtectedRoute path="/find-popular/clinic-premium/:clinic" component={Clinic}/>

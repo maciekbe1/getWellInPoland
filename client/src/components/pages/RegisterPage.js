@@ -4,16 +4,14 @@ import axios from 'axios'
 import { sha256 } from 'js-sha256';
 import Input from '../skeletons/Input'
 import '../../assets/styles/registerpage.scss'
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const RegisterPage = props => {
 
     const [postMessage, setPostMessage] = useState({});
     const [sent, setSent] = useState(false);
     const [values, setValues] = useState({ login: "", email: "", password: "", passwordRepeat: "" });
-    const onChange = (name, value) => {
-        setValues({ ...values, [name]: value });
-    };
+    const onChange = (name, value) => setValues({ ...values, [name]: value });
     const handlePasswordError = (values) => {
         if (values.password.length !== 0) {
             if (values.password !== values.passwordRepeat) {
@@ -50,7 +48,7 @@ const RegisterPage = props => {
                     "userInfo": {}
                 }
             }).then(function (response) {
-                console.log(response)
+                // console.log(response)
                 if (response.data.code === 200) {
                     setSent(true)
                 } else {
