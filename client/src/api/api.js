@@ -12,7 +12,8 @@ export function getToken(userData) {
         method: 'post',
         url: 'https://qang.bpower2.com/index.php/restApi/generateJWT',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'X-PINGOTHER': 'pingpong'
         },
         data: {
             "user-key": userData
