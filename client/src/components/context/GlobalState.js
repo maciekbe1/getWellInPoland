@@ -10,11 +10,11 @@ const GlobalState = props => {
     // const [content, setContent] = useState([])
 
     useEffect(() => {
-        // axios.get('https://qang.bpower2.com/index.php/restApi/gwipClinics')
+        // axios.get('https://qang.bpower2.com/index.php/restApi/gwip-clinics')
         // .then(res => {
         //     setClinicsName(res.data)
         // })
-        axios.get('https://qang.bpower2.com/index.php/restApi/gwipClinics?details=true')
+        axios.get('https://qang.bpower2.com/index.php/restApi/gwip-clinics?details=true')
         .then(res => {
             let arrPremiumClinics = []
             let arrPremiumClinicsName = []

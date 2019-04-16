@@ -206,6 +206,7 @@ $transition: .3s;
                 color: #fff;
                 margin: 28px auto;
                 transition: $transition;
+                text-decoration: none;
                 &:hover {
                     background: $btn-hover-color;
                 }
