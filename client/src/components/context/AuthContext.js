@@ -1,8 +1,7 @@
 import React from 'react';
 import sha256 from 'js-sha256';
-import { getToken } from '../../api/api'
+import { getToken, getSessionId } from '../../api/api'
 import AuthContext from './auth-context'
-import axios from 'axios'
 
 class AuthProvider extends React.Component {
     state = {
@@ -54,6 +53,9 @@ class AuthProvider extends React.Component {
     onSignInHandle = () => {
         let userData = window.btoa(`${this.state.login}:${this.state.password}`);
         this.setState({loading: true})
+
+        getSessionId(this.state.login, this.state.phpSession)
+
         getToken(userData).then( response => {
             // console.log(response);
             this.setState({
@@ -79,24 +81,6 @@ class AuthProvider extends React.Component {
             document.querySelector('#closeLoginModal').click();
             document.querySelector('#login').value = '';
             document.querySelector('#password').value = '';
-
-            const formData = new FormData();
-
-            formData.append('LoginForm[username]', this.state.login);
-            formData.append('LoginForm[password]', this.state.phpSession);
-            formData.append('LoginForm[rememberMe]', 0);
-
-            axios({
-                method: 'post',
-                url: 'https://qang.bpower2.com/index.php/site/login',
-                data: formData,
-                config: { headers: {'Content-Type': 'multipart/form-data' }}
-            })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
-
 
         }).catch(error => {
             console.log(error);
@@ -130,15 +114,6 @@ class AuthProvider extends React.Component {
         });
         sessionStorage.removeItem('gwtoken');
         sessionStorage.removeItem('gwlog');
-
-        axios({
-            method: 'post',
-            url: 'https://qang.bpower2.com/site/logout',
-        })
-        .catch(function (response) {
-            //handle error
-            console.log(response);
-        });
     };
 
     render() {

@@ -13,7 +13,7 @@ class Clinic extends Component {
     };
     componentDidMount() {
         // console.log(this.props.match.params);
-        const url = `https://qang.bpower2.com/index.php/restApi/gwipClinics?id=${this.props.match.params.clinic}&details=true`;
+        const url = `https://qang.bpower2.com/index.php/restApi/gwip-clinics?id=${this.props.match.params.clinic}&details=true`;
 
         axios.get(url).then(res => {
             // console.log(res.data);
