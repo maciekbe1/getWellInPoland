@@ -9,12 +9,11 @@ const Contact = () => {
     const [contactText, setContactText] = useState([]);
     const [action, setAction] = useState('');
     useEffect(() => {
-        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
-        // const url = 'https://qang.bpower2.com/index.php/restApi/generateJWT';
+        const userData = process.env.REACT_APP_USER_DATA_KEY;
         const contact = 'https://qang.bpower2.com/index.php/restApi/request/model/WwwPosts/params/{"link_id":7}';
 
         getToken(userData).then(res => {
-            console.log(res.data.token)
+            // console.log(res.data.token)
                 axios.get(contact, {
                     headers: {
                         'X-PINGOTHER': 'pingpong',
