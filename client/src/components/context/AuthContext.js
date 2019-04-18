@@ -63,7 +63,7 @@ class AuthProvider extends React.Component {
                 domain: 'qang.bpower2.com',
                 secure: true
             });
-            console.log(cookies.getAll());
+            // console.log(cookies.getAll());
         });
 
         getToken(userData).then( response => {

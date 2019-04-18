@@ -4,9 +4,9 @@ import axios from 'axios'
 class Test extends React.Component {
 
     componentDidMount() {
-        const get = `https://qang.bpower2.com/index.php/restApi/gwip-clinics`;
-        const post = 'https://qang.bpower2.com/index.php/restApi/generateJWT';
-        const userData = "YWRtaW46ODVmZDdjODg5ZjcxY2YxMDUzNzU1OTVjZGRjMDZiOWQzOGZjNTYyY2I2OWM1NGY4YzE2NWFhNzUxZDgxYjNkOQ==";
+        const get = process.env.REACT_APP_CLINICS_NAME;
+        const post = process.env.REACT_APP_GENERATE_AUTH_KEY;
+        const userData = process.env.REACT_APP_USER_DATA_KEY;
         axios.get(get).then(res => {
             console.log(res)
         }).catch(err => {
