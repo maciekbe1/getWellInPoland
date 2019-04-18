@@ -6,7 +6,7 @@ const Info = props => {
 
     useEffect(() => {
         const height = elementRef.current.clientHeight;
-        const result = Math.ceil(height / 10);
+        const result = Math.ceil(height / 20);
         setElem(result);
 
     },[]);

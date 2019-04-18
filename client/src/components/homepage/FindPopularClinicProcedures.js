@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import data from '../../database/findPopularClinicProcedures.json';
-import {FormattedMessage} from 'react-intl';
 import { Link } from 'react-router-dom'
 import AuthContext from '../context/auth-context'
 
@@ -11,7 +10,7 @@ const FindPopularClinicProcedures = () => {
             <div className="container">
                 <div className="row">
                     <h2>
-                        <FormattedMessage id="find.clinic.title" defaultMessage={`Find a Clinic for Popular Procedures`}/>
+                        Find a Clinic for Popular Procedures
                     </h2>
                     {data.map((item, index) => {
                         if(authContext.isAuth){

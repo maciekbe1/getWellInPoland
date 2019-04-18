@@ -54,7 +54,7 @@ class Navbar extends React.Component {
                                         !this.context.isAuth
                                             ? <div className="d-flex navbar-nav">
                                                 <a className="nav-link" href="/" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
-                                                <Link className="nav-link btn btn-outline-secondary" to="/register">Sign up</Link>
+                                                <Link className="nav-link btn btn-outline-secondary p-1 d-flex align-items-center" to="/register">Sign up</Link>
                                         </div>
                                             : <Link className="nav-link" to="/" onClick={this.context.signOut}>Sign out</Link>
                                     }

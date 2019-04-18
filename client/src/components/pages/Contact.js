@@ -4,6 +4,7 @@ import { HashLoader } from 'react-spinners';
 import SkeletonText from "../skeletons/SkeletonText";
 import Info from '../contact/Info'
 import { getToken } from '../../api/api'
+import {Link} from "react-router-dom";
 
 const Contact = () => {
     const [contactText, setContactText] = useState([]);
@@ -13,11 +14,8 @@ const Contact = () => {
         const contact = 'https://qang.bpower2.com/index.php/restApi/request/model/WwwPosts/params/{"link_id":7}';
 
         getToken(userData).then(res => {
-            // console.log(res.data.token)
                 axios.get(contact, {
                     headers: {
-                        'X-PINGOTHER': 'pingpong',
-                        'Content-Type': 'application/json',
                         'Authorization': res.data.token
                     }
                 }).then(res => {
@@ -32,41 +30,51 @@ const Contact = () => {
     }, []);
 
     return(
-        <div className="container contact">
-            <h1>Information</h1>
-            {
-                contactText.length ?
-                <div className={"text-list" + action}>{
-                    contactText[0].map((item, index) => {
-                        // switch (index) {
-                        //     //title of content
-                        //     case 0:
-                        //         return <Info key={index} text={item} />;
-                        //     //content
-                        //     case 1:
-                        //         return <Info key={index} text={item}/>;
-                        //     //if add more content than we predict
-                        //     default:
-                        //         return <Info key={index} text={item}/>
-                        // }
-                        return <Info key={index} text={item} />;
-                    })
+        <div className="contact">
+            <nav aria-label="breadcrumb">
+                <ol className="breadcrumb">
+                    <div className="container d-flex flex-wrap">
+                        <li className="breadcrumb-item"><Link to="/">Home</Link></li>
+                        <li className="breadcrumb-item active" aria-current="page">Contact</li>
+                    </div>
+                </ol>
+            </nav>
+            <div className="container">
+                <h1>Information</h1>
+                {
+                    contactText.length ?
+                        <div className={"text-list" + action}>{
+                            contactText[0].map((item, index) => {
+                                // switch (index) {
+                                //     //title of content
+                                //     case 0:
+                                //         return <Info key={index} text={item} />;
+                                //     //content
+                                //     case 1:
+                                //         return <Info key={index} text={item}/>;
+                                //     //if add more content than we predict
+                                //     default:
+                                //         return <Info key={index} text={item}/>
+                                // }
+                                return <Info key={index} text={item} />;
+                            })
 
-                }
-                </div> : <div>
-                        <SkeletonText/>
-                        <div className="spinner-container">
-                            <div className="spinner-position">
-                                <HashLoader
-                                    sizeUnit={"px"}
-                                    size={70}
-                                    margin={"6px"}
-                                    color={'#fff'}
-                                />
+                        }
+                        </div> : <div>
+                            <SkeletonText/>
+                            <div className="spinner-container">
+                                <div className="spinner-position">
+                                    <HashLoader
+                                        sizeUnit={"px"}
+                                        size={70}
+                                        margin={"6px"}
+                                        color={'#fff'}
+                                    />
+                                </div>
                             </div>
                         </div>
-                    </div>
-            }
+                }
+            </div>
         </div>
     )
 };
