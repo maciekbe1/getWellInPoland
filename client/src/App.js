@@ -16,14 +16,12 @@ import GlobalState from './components/context/GlobalState';
 import RegisterPage from "./components/pages/RegisterPage";
 import Contact from './components/pages/Contact'
 
-
 class App extends Component {
     static propTypes = {
         cookies: instanceOf(Cookies).isRequired
       };
 
     state = {
-        language: '',
         authenticated: false
     };
 

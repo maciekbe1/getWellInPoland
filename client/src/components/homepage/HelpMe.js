@@ -1,26 +1,31 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import GlobalState from '../context/global-context';
 
 const HelpMe = () => {
+    const globalState = useContext(GlobalState);
+
+    const {language} = globalState
+
     return (
         <div className="help-me container">
             <div className="row">
-                <p>How can Get Well in Poland help me?</p>
+                <p>{language.homepage.text_32}</p>
                 <div className="help-me-icons w-100">
                     <ul>
                         <li className="help1">
-                            <span>Choose from among the <em>highest quality clinics and hospitals</em></span>
+                            <span>{language.homepage.text_33}</span>
                         </li>
                         <li className="help2">
-                            <span>Learn more about the doctors <em>and your treatment options</em></span>
+                            <span>{language.homepage.text_34}</span>
                         </li>
                         <li className="help3">
-                            <span>Connect with the doctors</span>
+                            <span>{language.homepage.text_35}</span>
                         </li>
                         <li className="help4">
-                            <span>Get assistance organizing flights, <em>accommodation, aftercare, and more</em></span>
+                            <span>{language.homepage.text_36}</span>
                         </li>
                         <li className="help5">
-                            <span>We make sure you travel <em>and return home safely</em></span>
+                            <span>{language.homepage.text_37}</span>
                         </li>
                     </ul>
                 </div>

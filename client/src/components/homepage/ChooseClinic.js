@@ -1,19 +1,23 @@
-import React from 'react';
+import React, {useContext} from 'react';
+import GlobalState from '../context/global-context';
 
 const ChooseClinic = () => {
+    const globalState = useContext(GlobalState);
+    const {language} = globalState
+
     return (
         <div className="choose-clinic container-fluid">
             <div className="container p-0">
                 <div className="row">
                     <div className="col-lg-6 offeset-lg-3 text-center">
                         <h2>
-                           Need help diagnose the disease?
+                            {language.homepage.text_6}
                         </h2>
                         <p>
-                            The Get Well in Poland Care Team is here to help you with any questions you have. Just let us know what you are looking for and we will get back to you as soon as possible.
+                            {language.homepage.text_7}
                         </p>
                         <a href="https://qang.bpower2.com/index.php/workflow/workflowInstance/create/wc_id/379">
-                            help me diagnose the disease
+                            {language.homepage.text_8}
                         </a>
                    </div>
                 </div>
