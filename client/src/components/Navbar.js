@@ -12,7 +12,7 @@ import GlobalState from './context/global-context';
 const Navbar = () => {
     const authContext = useContext(AuthContext)
     const globalState = useContext(GlobalState);
-    const {setLanguage} = globalState
+    const {language, setLanguage} = globalState
 
     return (
         <div className="nav-bar container-fluid">
@@ -45,26 +45,26 @@ const Navbar = () => {
                             <li className="nav-item">
                                 {
                                     authContext.isAuth
-                                        ? <a className="nav-link" href="#test" onClick={(e) => e.preventDefault()}>Logged in as: <span className="logged-as-name">{authContext.name.toLowerCase()}</span></a>
+                                        ? <a className="nav-link" href="#test" onClick={(e) => e.preventDefault()}>{language.navigation.text_4} <span className="logged-as-name">{authContext.name.toLowerCase()}</span></a>
                                         : null
                                 }
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/contact">Contact</Link>
+                                <Link className="nav-link" to="/contact">{language.navigation.text_1}</Link>
                             </li>
                             {
                                 authContext.isAuth
-                                    ? <li><Link className="nav-link" to="/all-clinics">Clinics</Link></li>
+                                    ? <li><Link className="nav-link" to="/all-clinics">{language.navigation.text_5}</Link></li>
                                     : null
                             }
                             <li className="nav-item">
                                 {
                                     !authContext.isAuth
                                         ? <div className="d-flex navbar-nav">
-                                            <a className="nav-link" href="/" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>Sign in</a>
-                                            <Link className="nav-link btn btn-outline-secondary p-1 d-flex align-items-center" to="/register">Sign up</Link>
+                                            <a className="nav-link" href="/" data-toggle="modal" data-target="#loginModal" onClick={(e) => e.preventDefault()}>{language.navigation.text_2}</a>
+                                            <Link className="nav-link btn btn-outline-secondary p-1 d-flex align-items-center" to="/register">{language.navigation.text_3}</Link>
                                     </div>
-                                        : <Link className="nav-link" to="/" onClick={authContext.signOut}>Sign out</Link>
+                                        : <Link className="nav-link" to="/" onClick={authContext.signOut}>{language.navigation.text_10}</Link>
                                 }
                             </li>
                         </ul>

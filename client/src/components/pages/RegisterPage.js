@@ -1,12 +1,17 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import success from '../../assets/images/checked.png';
 import axios from 'axios'
 import { sha256 } from 'js-sha256';
 import Input from '../skeletons/Input'
 import '../../assets/styles/registerpage.scss'
 import { Link } from "react-router-dom";
+import GlobalState from '../context/global-context';
 
 const RegisterPage = props => {
+    const globalState = useContext(GlobalState);
+    const {language} = globalState
+
+    console.log(language.register);
 
     const [postMessage, setPostMessage] = useState({});
     const [sent, setSent] = useState(false);
@@ -70,12 +75,12 @@ const RegisterPage = props => {
                 </ol>
             </nav>
             <div className="container register-page">
-                <h1 className="text-center">Create your personal account</h1>
+                <h1 className="text-center">{language.register.text_1}</h1>
                 <div className="row justify-content-center">
                     {!sent ?
                         <form className="col-lg-6" onSubmit={event => handleSubmit(event, values)}>
                             <div className="form-group">
-                                <label>Login</label>
+                                <label>{language.register.text_2}</label>
                                 <Input
                                     name="login"
                                     placeholder=""
@@ -87,7 +92,7 @@ const RegisterPage = props => {
                                 { ("login" in postMessage) ? handleLoginError() : null }
                             </div>
                             <div className="form-group">
-                                <label>Email</label>
+                                <label>{language.register.text_3}</label>
                                 <Input
                                     name="email"
                                     placeholder=""
@@ -100,7 +105,7 @@ const RegisterPage = props => {
                                 { ("email" in postMessage) ? handleEmailError() : null }
                             </div>
                             <div className="form-group">
-                                <label>Password</label>
+                                <label>{language.register.text_4}</label>
                                 <Input
                                     name="password"
                                     placeholder=""
@@ -113,7 +118,7 @@ const RegisterPage = props => {
                                 { handlePasswordError(values) }
                             </div>
                             <div className="form-group">
-                                <label>Repeat password</label>
+                                <label>{language.register.text_5}</label>
                                 <Input
                                     name="passwordRepeat"
                                     placeholder=""
@@ -124,13 +129,13 @@ const RegisterPage = props => {
                                     required
                                 />
                             </div>
-                            <button type="submit">Send</button>
+                            <button type="submit">{language.register.text_6}</button>
                         </form>
                         : <div className="d-flex justify-content-center align-items-center flex-column register-success">
-                            <h2 className="text-success">Congratulation!</h2>
+                            <h2 className="text-success">{language.register.text_7}</h2>
                             <img alt="success" className="register-success-image" src={success}/>
-                            <h4>You have been successfully registered.</h4>
-                            <h3 className="text-center">Please check your registered Email for email verification.</h3>
+                            <h4>{language.register.text_8}</h4>
+                            <h3 className="text-center">{language.register.text_9}</h3>
                         </div>}
                 </div>
             </div>

@@ -39,7 +39,6 @@ class Autocomplete extends Component {
     };
 
     render() {
-        console.log(this.context.language.homepage.text_51)
         return(
             <div className="d-flex">
                 <div className="w-100">
