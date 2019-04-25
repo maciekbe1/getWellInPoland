@@ -19,6 +19,17 @@ const Contact = () => {
                         'Authorization': res.data.token
                     }
                 }).then(res => {
+
+                    let arr = []
+                    res.data.data.objects.map(item => {
+                        arr.push({
+                            id: item.id,
+                            en: item.post_content
+                        })
+                        return null
+                    })
+
+                    // console.log(arr)
                     let contactArr = [];
                     contactArr.push(res.data.data.objects);
                     setTimeout(()=> {
@@ -28,6 +39,7 @@ const Contact = () => {
                 })
             });
     }, []);
+
 
     return(
         <div className="contact">

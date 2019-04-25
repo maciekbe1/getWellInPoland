@@ -98,6 +98,15 @@ $transition: .3s;
       }
     }
   }
+  .languages {
+    img {
+      cursor: pointer;
+      transition: .2s;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
   @media (max-width: 576px) {
     //.nav-btn {
     //  width: 100%;

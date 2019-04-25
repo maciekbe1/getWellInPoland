@@ -7,6 +7,8 @@ function OurPartners() {
     const authContext = useContext(AuthContext);
     const globalState = useContext(GlobalState);
 
+    const {language} = globalState
+
     const checkImage = (path) => {
         try {
             return require(`../../assets/images/${path}.jpg`);
@@ -48,7 +50,7 @@ function OurPartners() {
         <div className="our-partners">
             <div className="container">
                 <div className="text-center">
-                    <h2>Our Partners</h2>
+                    <h2>{language.homepage.text_26}</h2>
                 </div>
                 <div className="row">
                 { content }

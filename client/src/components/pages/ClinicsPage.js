@@ -56,7 +56,7 @@ class ClinicsPage extends Component {
                                 <h3>{item.nazwa.value}</h3>
                                 <p>{item.klientopis_facility_description_i599rc.value}</p>
                                 <div className="d-flex justify-content-end">
-                                    <Link className="btn-primary btn" to={`/all-clinics/clinic/${slugify(item.kli_id.value)}`}>Show</Link>
+                                    <Link className="btn-primary btn" to={`/all-clinics/clinic/${slugify(item.kli_id.value)}`}>{this.context.language.homepage.text_54}</Link>
                                 </div>
                             </div>
                         </div>
@@ -79,12 +79,12 @@ class ClinicsPage extends Component {
                     <div className="clinic-banner d-flex align-items-end">
                         <div className="clinic-search d-flex align-items-center justify-content-center">
                             <div className="col-sm-5 text-center">
-                                <h2>Help me find a clinic</h2>
-                                <input value={this.state.search} onChange={this.onChange} type="text" className="form-control" placeholder="find a clinic"/>
+                                <h2>{this.context.language.homepage.text_50}</h2>
+                                <input value={this.state.search} onChange={this.onChange} type="text" className="form-control" placeholder={this.context.language.homepage.text_51}/>
                             </div>
                         </div>
                     </div>
-                    <h1>List of clinics</h1>
+                    <h1>{this.context.language.homepage.text_53}</h1>
                     {content}
                 </div>
             </div>

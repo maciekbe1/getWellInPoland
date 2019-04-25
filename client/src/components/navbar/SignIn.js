@@ -1,16 +1,19 @@
 import React, { useContext } from 'react';
 import AuthContext from "../context/auth-context";
+import GlobalState from '../context/global-context';
 
 const SignIn = (props) => {
 
     const context = useContext(AuthContext)
+    const globalState = useContext(GlobalState);
+    const {language} = globalState
 
     return (
         <div className="modal fade" id="loginModal" tabIndex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
             <div className="modal-dialog" role="document">
                 <div className="modal-content">
                 <div className="modal-header">
-                    <h5 className="modal-title" id="loginModalLabel">Authorization with Bpower2 account</h5>
+                    <h5 className="modal-title" id="loginModalLabel">{language.homepage.text_55}</h5>
                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                     </button>

@@ -39,13 +39,14 @@ class Autocomplete extends Component {
     };
 
     render() {
+        console.log(this.context.language.homepage.text_51)
         return(
             <div className="d-flex">
                 <div className="w-100">
-                    <input value={this.state.search} onChange={this.findClinicOnChange} type="text" className="form-control" placeholder="find a clinic" />
+                    <input value={this.state.search} onChange={this.findClinicOnChange} type="text" className="form-control" placeholder={this.context.language.homepage.text_51} />
                     {this.renderSuggestion()}
                 </div>
-                <Link to={{ pathname: '/all-clinics', state: this.state.search }} className="btn btn-primary find-clinics">Search</Link>
+                <Link to={{ pathname: '/all-clinics', state: this.state.search }} className="btn btn-primary find-clinics">{this.context.language.homepage.text_52}</Link>
             </div>
         )
     }
