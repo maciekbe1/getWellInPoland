@@ -52,7 +52,6 @@ const Contact = () => {
                 </ol>
             </nav>
             <div className="container">
-                <h1>Information</h1>
                 {
                     contactText.length ?
                         <div className={"text-list" + action}>{

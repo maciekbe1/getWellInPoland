@@ -15,11 +15,17 @@ const GlobalState = props => {
     const [translations, setTranslations] = useState({
         en: {
             homepage: {},
-            contact: {}
+            contact: {},
+            navigation: {},
+            footer: {},
+            register: {}
         },
         pl: {
             homepage: {},
-            contact: {}
+            contact: {},
+            navigation: {},
+            footer: {},
+            register: {}
         }
     })
     const [language, setLang] = useState(translations.en)
@@ -47,6 +53,12 @@ const GlobalState = props => {
             let plContact = {};
             let enHomepage = {};
             let plHomepage = {};
+            let enNavigation = {};
+            let plNavigation = {};
+            let enFooter = {};
+            let plFooter = {};
+            let enRegister = {};
+            let plRegister = {};
 
             res.data.map(post => {
                 switch(post.post.link_id) {
@@ -61,6 +73,24 @@ const GlobalState = props => {
                             enHomepage['text_' + post.post.menu_order] = post.post.post_content,
                             plHomepage['text_' + post.post.menu_order] = post.post.post_content,
                             post.translations.length ? (plHomepage['text_' + post.post.menu_order] = post.translations[0].translation) : null
+                        )
+                    case '9':
+                        return (
+                            enNavigation['text_' + post.post.menu_order] = post.post.post_content,
+                            plNavigation['text_' + post.post.menu_order] = post.post.post_content,
+                            post.translations.length ? (plNavigation['text_' + post.post.menu_order] = post.translations[0].translation) : null
+                        )
+                    case '10':
+                        return (
+                            enFooter['text_' + post.post.menu_order] = post.post.post_content,
+                            plFooter['text_' + post.post.menu_order] = post.post.post_content,
+                            post.translations.length ? (plFooter['text_' + post.post.menu_order] = post.translations[0].translation) : null
+                        )
+                    case '11':
+                        return (
+                            enRegister['text_' + post.post.menu_order] = post.post.post_content,
+                            plRegister['text_' + post.post.menu_order] = post.post.post_content,
+                            post.translations.length ? (plRegister['text_' + post.post.menu_order] = post.translations[0].translation) : null
                         )
                     default:
                         return null
@@ -79,11 +109,17 @@ const GlobalState = props => {
                     {
                         en: {
                             homepage: enHomepage,
-                            contact: enContact
+                            contact: enContact,
+                            navigation: enNavigation,
+                            footer: enFooter,
+                            register: enRegister
                         },
                         pl: {
                             homepage: plHomepage,
-                            contact: plContact
+                            contact: plContact,
+                            navigation: plNavigation,
+                            footer: plFooter,
+                            register: plRegister
                         },
                     }
                 )
